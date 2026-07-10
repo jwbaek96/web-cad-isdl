@@ -1,0 +1,819 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>중앙대학교 시스템 융합설계 연구실 (ISDL: Integrated Systems Design Lab.)</title>
+  <meta name="description" content="ISDL : Integrated Systems Design Laboratory, School of Mechanical Engineering, Chung-Ang University, Seoul, Korea.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../files/CAU_emblem.png">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header glass-bar">
+      <div class="header-inner inset-shadow">
+        <a class="brand" href="#top" aria-label="ISDL home">
+          <span class="brand-mark">ISDL</span>
+          <span class="brand-text">
+            <strong>Integrated Systems Design Laboratory</strong>
+            <span>중앙대학교 기계공학부 시스템 융합설계 연구실</span>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="main-nav" aria-label="Primary">
+          <a href="#education">EDUCATION</a>
+          <a href="#research">RESEARCH</a>
+          <a href="#members">MEMBERS</a>
+          <a href="#publications">PUBLICATION</a>
+          <a href="#activities">ACTIVITIES</a>
+        </nav>
+      </div>
+    </header>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile primary">
+      <button class="menu-close" type="button" aria-label="Close menu">
+        <svg class="menu-close-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M6 6L18 18"></path>
+          <path d="M18 6L6 18"></path>
+        </svg>
+      </button>
+      <a href="#education">EDUCATION</a>
+      <a href="#research">RESEARCH</a>
+      <a href="#members">MEMBERS</a>
+      <a href="#publications">PUBLICATION</a>
+      <a href="#activities">ACTIVITIES</a>
+    </nav>
+    <button class="menu-backdrop" type="button" tabindex="-1" aria-hidden="true"></button>
+    <button class="top-fab" type="button" aria-label="Scroll to top">
+      <svg class="top-fab-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M6 14L12 8L18 14"></path>
+      </svg>
+    </button>
+    <button class="info-fab" type="button" aria-expanded="false" aria-controls="infoPopup" aria-label="Open information popup">i</button>
+    <section class="info-popup glass-panel" id="infoPopup" role="dialog" aria-label="Info and context" aria-hidden="true">
+      <button class="info-close" type="button" aria-label="Close information popup">
+        <svg class="info-close-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M6 6L18 18"></path>
+          <path d="M18 6L6 18"></path>
+        </svg>
+      </button>
+      <p>School of Mechanical Engineering, Chung-Ang University, 221 Hukseok-Dong, Seoul, 156-756, Korea. +82-2-820-5787</p>
+      <p>최해진</p>
+      <p>(Prof. Hae-Jin Choi)</p>
+      <p><a href="mailto:hjchoi@cau.ac.kr">hjchoi@cau.ac.kr</a></p>
+      <p><a href="tel:+8228205787">+82-2-820-5787</a></p>
+    </section>
+
+    <main id="top" class="page-main">
+      <section class="hero">
+        <div class="hero-backdrop" aria-hidden="true"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-copy">
+          <!-- <p class="eyebrow">CAU MECHANICAL ENGINEERING</p> -->
+          <h1>Integrated Systems<br>Design Laboratory</h1>
+          <p class="hero-summary">
+            중앙대학교 기계공학부 시스템 융합설계 연구실
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#research">석/박사과정 및 학부연구생 모집중 →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section hero-context-section" aria-label="Latest news and research projects">
+        <div class="hero-context">
+          <section class="hero-context-block">
+            <h2>NEWS</h2>
+            <ul>
+              <li>2025년 9월: Do Mihn Duc 박사, 베트남 하노이 과학 기술 대학교(HUST) 교수 임용</li>
+              <li>2025년 1월: 산업 기술 알키미스트 프로젝트 3단계 선정</li>
+            </ul>
+          </section>
+          <section class="hero-context-block">
+            <h2>RESEARCH PROJECTS <a href="#" aria-label="Download ISDL introduction">(Download ISDL introduction)</a></h2>
+            <ul>
+              <li>애바타 및 인터랙티브 AI 스마트 제조 멀티버스 플랫폼 개발 - 산업부(알키미스트)</li>
+              <li>고강도 고해상도 나노/마이크로 복합재 적층 제조 - 중견연구, 연구재단</li>
+              <li>차세대 초장사정 자주포 사거리 연장 시뮬레이션 모델 개발 - 국방과학연구소</li>
+              <li>고점도 복합재 적층제조 (3D 프린터 및 재료개발) - 국방과학연구소</li>
+              <li>생산중 로봇 고장 예지 및 진단 - 현대기아자동차</li>
+              <li>차세대 스마트 제조용 로봇 모니터링 시스템 - 산업통상자원부</li>
+            </ul>
+          </section>
+        </div>
+      </section>
+
+      <!-- <section class="summary-grid">
+        <article class="summary-card glass-panel">
+          <span class="summary-label">Direction</span>
+          <strong>신뢰감 있는 기관형 인상</strong>
+          <p>색상과 레이아웃은 절제하고, 정보 구조는 명확하게 유지합니다.</p>
+        </article>
+        <article class="summary-card glass-panel">
+          <span class="summary-label">Research</span>
+          <strong>설계, AI, 스마트 제조 중심</strong>
+          <p>연구실의 실제 축이 메인에서 바로 읽히도록 구성합니다.</p>
+        </article>
+        <article class="summary-card glass-panel">
+          <span class="summary-label">Management</span>
+          <strong>정적 사이트 + 일부 시트 관리</strong>
+          <p>복잡한 관리자보다 필요한 부분만 손쉽게 갱신하도록 설계합니다.</p>
+        </article>
+      </section> -->
+
+      <section class="section" id="education">
+        <div class="section-heading">
+          <p class="eyebrow">Education</p>
+        </div>
+        <div class="edu-accordion" data-accordion>
+          <article class="edu-item">
+            <h3 class="edu-title">
+              <button class="edu-trigger" type="button" id="edu-trigger-1" aria-expanded="true" aria-controls="edu-panel-1">
+                Numerical Analysis (Undergraduate Course)
+              </button>
+            </h3>
+            <div class="edu-panel" id="edu-panel-1" role="region" aria-labelledby="edu-trigger-1">
+              <div class="edu-panel-inner">
+                <p>
+                  <strong class="edu-notice-label">Notice:</strong>
+                  아래 링크 MATLAB 교내 사용 및 설치 안내 라는 게시물에 설치방법, 인증방법 등이 나와있습니다. 아래 링크 참조바랍니다.
+                  교내포탈아이디만 있으면 교내외 상관없이 사용 할 수 있습니다.
+                </p>
+                <p>
+                  <a class="edu-link" href="#" aria-label="Matlab 교내사용 및 설치 안내 바로가기">Matlab 교내사용 및 설치 안내 바로가기</a>
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="edu-item">
+            <h3 class="edu-title">
+              <button class="edu-trigger" type="button" id="edu-trigger-2" aria-expanded="false" aria-controls="edu-panel-2">
+                DOE and Optimization (Undergraduate Course)
+              </button>
+            </h3>
+            <div class="edu-panel" id="edu-panel-2" role="region" aria-labelledby="edu-trigger-2">
+              <div class="edu-panel-inner">
+                <p><strong class="edu-notice-label">Notice:</strong></p>
+              </div>
+            </div>
+          </article>
+          <article class="edu-item">
+            <h3 class="edu-title">
+              <button class="edu-trigger" type="button" id="edu-trigger-3" aria-expanded="false" aria-controls="edu-panel-3">
+                Capstone Design (Undergraduate Course)
+              </button>
+            </h3>
+            <div class="edu-panel" id="edu-panel-3" role="region" aria-labelledby="edu-trigger-3">
+              <div class="edu-panel-inner">
+                <p><strong class="edu-notice-label">Notice:</strong></p>
+              </div>
+            </div>
+          </article>
+          <article class="edu-item">
+            <h3 class="edu-title">
+              <button class="edu-trigger" type="button" id="edu-trigger-4" aria-expanded="false" aria-controls="edu-panel-4">
+                Advanced Design of Complex Systems (Graduate Course)
+              </button>
+            </h3>
+            <div class="edu-panel" id="edu-panel-4" role="region" aria-labelledby="edu-trigger-4">
+              <div class="edu-panel-inner">
+                <p><strong class="edu-notice-label">Notice:</strong></p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="research">
+        <div class="section-heading">
+          <p class="eyebrow">Research Areas</p>
+        </div>
+        <div class="research-grid">
+          <article class="research-item">
+            <span>01</span>
+            <h3>Agentic AI for Design & Manufacturing</h3>
+            <p>설계 의사결정과 제조 프로세스를 연결하는 AI 연구.</p>
+          </article>
+          <article class="research-item">
+            <span>02</span>
+            <h3>Smart Manufacturing Systems</h3>
+            <p>모니터링, 예지진단, 공정 최적화 중심의 스마트 제조.</p>
+          </article>
+          <article class="research-item">
+            <span>03</span>
+            <h3>Additive Manufacturing</h3>
+            <p>적층 제조 공정과 소재, 시뮬레이션을 아우르는 연구.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="members">
+        <div class="section-heading compact">
+          <p class="eyebrow">Members</p>
+        </div>
+        <div class="members-layout">
+          <article class="member-profile glass-panel">
+            <div class="member-profile-media">
+              <img class="member-photo" src="../files/image.png" alt="Professor profile placeholder image">
+            </div>
+            <div class="member-profile-body">
+              <p class="member-role">Professor</p>
+              <h3>최해진 Professor Hae-Jin Choi, Ph.D.</h3>
+              <p class="member-profile-summary">School of Mechanical Engineering, Chung-Ang University</p>
+              <div class="member-contact-row">
+                <a href="mailto:hjchoi@cau.ac.kr">hjchoi@cau.ac.kr</a>
+                <span>+82-2-820-5787</span>
+              </div>
+              <div class="member-columns">
+                <div>
+                  <strong>학력</strong>
+                  <ul class="member-bullet-list">
+                    <li>Ph.D., Mechanical Engineering, Georgia Institute of Technology, Atlanta, USA (2002-2005)</li>
+                    <li>M.S., 기계공학과, 연세대학교, 서울, 대한민국 (1995-1997)</li>
+                    <li>B.S., 기계공학과, 연세대학교, 서울, 대한민국 (1989-1995)</li>
+                  </ul>
+                </div>
+                <div>
+                  <strong>약력</strong>
+                  <ul class="member-bullet-list">
+                    <li>중앙대학교 기계공학부 교수 (2010-현재)</li>
+                    <li>싱가폴 난양공대 기계항공공학부 조교수 (2007-2009)</li>
+                    <li>Georgia Institute of Technology, Atlanta, USA, PostDoc (2006-2007)</li>
+                  </ul>
+                </div>
+              </div>
+              <a style="margin-top: 7px;" class="button button-secondary glass-button" href="https://livecauac-my.sharepoint.com/:b:/g/personal/hjchoi_cau_ac_kr/EaAqORZVbrRAh3ZVWCpN2q0BdrfDkRmjcLHnXUXWvcV49A?e=7Eh1RG" target="_blank" rel="noopener noreferrer">Download CV</a>
+            </div>
+          </article>
+
+          <section class="members-subsection">
+            <h3>Students</h3>
+            <div class="members-table-wrap glass-panel">
+              <table class="members-table">
+                <thead>
+                  <tr>
+                    <th>학위과정</th>
+                    <th>이름</th>
+                    <th>연구분야</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>박사과정</td><td>김민건</td><td>Materials AI, Image-based AI</td></tr>
+                  <tr><td>박사과정</td><td>한승재</td><td>Additive Manufacturing</td></tr>
+                  <tr><td>박사과정</td><td>이건휘</td><td>Agentic AI for Design / Manufacturing</td></tr>
+                  <tr><td>석사과정</td><td>변율석</td><td>Smart Manufacturing, Unmanned Aerial System (UAS), Military Defence</td></tr>
+                  <tr><td>석사과정</td><td>김솔찬</td><td>Agentic AI for Design / Manufacturing</td></tr>
+                  <tr><td>석사과정</td><td>조수현</td><td>Unmanned Aerial System (UAS), Military Defence</td></tr>
+                  <tr><td>석사과정</td><td>Liang JunHui</td><td>Additive Manufacturing</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="members-subsection">
+            <h3>Alumni</h3>
+            <div class="members-table-wrap glass-panel">
+              <table class="members-table">
+                <thead>
+                  <tr>
+                    <th>학위</th>
+                    <th>이름</th>
+                    <th>직장</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>박사</td><td>장성우</td><td>국방과학연구소</td></tr>
+                  <tr><td>박사</td><td>한순영</td><td>LG화학</td></tr>
+                  <tr><td>박사</td><td>Do Mihn Duc</td><td>Hanoi University of Science and Technology(HUST), Professor</td></tr>
+                  <tr><td>박사</td><td>Pham Van Huan</td><td>한국표준과학연구원, 광영측정표준팀, 박사후 연구원</td></tr>
+                  <tr><td>석사</td><td>한경섭</td><td>싱가폴 난양공대 박사, 아모레퍼시픽</td></tr>
+                  <tr><td>석사</td><td>유제준</td><td>현대건설</td></tr>
+                  <tr><td>석사</td><td>박용진</td><td>현대기아자동차</td></tr>
+                  <tr><td>석사</td><td>백운경</td><td>LG전자</td></tr>
+                  <tr><td>석사</td><td>서석훈</td><td>개인사업</td></tr>
+                  <tr><td>석사</td><td>이윤하</td><td>LG디스플레이</td></tr>
+                  <tr><td>석사</td><td>손영훈</td><td>원프리딕트</td></tr>
+                  <tr><td>석사</td><td>김원재</td><td>이테크건설</td></tr>
+                  <tr><td>석사</td><td>유기민</td><td>ASML</td></tr>
+                  <tr><td>석사</td><td>허지웅</td><td>ASML</td></tr>
+                  <tr><td>석사</td><td>Hung Nguyen</td><td>-</td></tr>
+                  <tr><td>석사</td><td>임형남</td><td>넥센타이어</td></tr>
+                  <tr><td>석사</td><td>이기훈</td><td>SK</td></tr>
+                  <tr><td>석사</td><td>조승연</td><td>싱가폴 난양공대 박사과정</td></tr>
+                  <tr><td>석사</td><td>심영선</td><td>삼성전자</td></tr>
+                  <tr><td>석사</td><td>서혜련</td><td>삼성전자</td></tr>
+                  <tr><td>석사</td><td>주송현</td><td>퍼듀 대 박사과정</td></tr>
+                  <tr><td>석사</td><td>김현성</td><td>-</td></tr>
+                  <tr><td>석사</td><td>신명현</td><td>LG에너지솔루션</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="members-subsection">
+            <h3>Representative Alumni</h3>
+            <div class="alumni-cards">
+              <article class="alumni-card glass-panel">
+                <img class="alumni-photo" src="../files/image.png" alt="Do Mihn Duc placeholder portrait">
+                <div>
+                  <strong>도민득 박사 (Do Mihn Duc)</strong>
+                  <p>Samsung Display, Vietnam</p>
+                </div>
+              </article>
+              <article class="alumni-card glass-panel">
+                <img class="alumni-photo" src="../files/image.png" alt="Huan PHAM placeholder portrait">
+                <div>
+                  <strong>팜 반 후안 박사 (Huan PHAM)</strong>
+                  <p>Prognosis and health monitoring, Smart Manufacturing</p>
+                </div>
+              </article>
+              <article class="alumni-card glass-panel">
+                <img class="alumni-photo" src="../files/image.png" alt="임형남 placeholder portrait">
+                <div>
+                  <strong>임형남</strong>
+                  <p>넥센타이어</p>
+                </div>
+              </article>
+              <article class="alumni-card glass-panel">
+                <img class="alumni-photo" src="../files/image.png" alt="Hung Nguyen placeholder portrait">
+                <div>
+                  <strong>Hung Nguyen</strong>
+                  <p>Alumni profile update pending</p>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section" id="publications">
+        <div class="section-heading compact">
+          <p class="eyebrow">Publications</p>
+        </div>
+        <div class="publication-catalog">
+          <section class="publication-group glass-panel">
+            <h3>Journal Articles</h3>
+            <ol class="publication-entries">
+              <li class="publication-entry"><strong>2026.</strong> Lee, G., Kim, S., Byun, Y., Lee, J., Choi, H. J. "A Review of Knowledge Base Construction Strategies for LLM-based Intelligent Decision Support System in Material Selection and Process Planning," <em>International Journal of Precision Engineering and Manufacturing-Green Technology</em>. <a href="https://doi.org/10.1007/s40684-026-00890-w" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry"><strong>2026.</strong> Ju, S., Kim, M., Kim, W., Nam, J., Choi, H. J. "Rheology-Informed Simulation Framework for Predicting Fiber Orientation in Material Extrusion Process," <em>International Journal of Precision Engineering and Manufacturing-Green Technology</em>. <a href="https://doi.org/10.1007/s40684-025-00834-w" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry"><strong>2025.</strong> Byun, Y., Choi, H. J. "Optimization of snap-fit geometry for fused deposition modeling process," <em>Journal of Mechanical Science and Technology</em>. <a href="https://doi.org/10.1007/s12206-025-2505-2" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry"><strong>2025.</strong> Ju, S., Kim, T., Lee, S., Nam, J., Choi, H. J. "Machinability of Ti-6Al-4V in the milling process using cryogenic cooling and nanofluid MQL," <em>Journal of Manufacturing Processes</em>. <a href="https://doi.org/10.1016/j.jmapro.2025.08.030" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry"><strong>2025.</strong> Yoon, J., Kim, N., Noh, J., Park, I., Lee, S., Yoon, Y., Choi, H. J. "Acoustofluidics Lab on a Chip System for size-based Nanoparticle Separation," <em>International Journal of Precision Engineering and Manufacturing-Green Technology</em>. <a href="https://doi.org/10.1007/s40684-025-00782-5" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry"><strong>2025.</strong> Kim, M., Lee, G., Choi, S. K., Choi, H. J. "An Image-based Deep Learning Framework for Predicting Thermal Conductivity of Polymer Composites with Rotational Data Augmentation," <em>Materials &amp; Design</em>. <a href="https://doi.org/10.1016/j.matdes.2025.114662" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry"><strong>2025.</strong> Han, S., Kim, H., Lee, G., Jun, M. B. G., Choi, H. J. "High-Performance Methacrylate-Phenylenediamine-Epoxy Photothermal Dual-Curing Resin for Digital Light Processing," <em>International Journal of Precision Engineering and Manufacturing</em>. <a href="https://doi.org/10.1007/s12541-025-01248-z" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry"><strong>2024.</strong> Han, S., Choi, S. K., Choi, H. J. "A Mask R-CNN based process monitoring system for fabricating high density ceramic parts using photo-polymerization," <em>Journal of Mechanical Science and Technology</em>. <a href="https://doi.org/10.1007/s12206-024-2411-z" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2023.</strong> Kim, Y., Nguyen, P. C., Kim, H., Choi, H. J., &amp; Choi, Y. "Characterization and design of two-dimensional multi-morphology cellular structures for desired deformation," <em>Journal of Computational Design and Engineering</em>. <a href="https://doi.org/10.1093/jcde/qwad010" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2023.</strong> Hwang, S., Lee, S. W., Choi, H. J., Choi, S. K. "Optimal design of thermo-compression bonder via ANN-based surrogate modeling under uncertainty," <em>Journal of Engineering Design</em>. <a href="https://doi.org/10.1080/09544828.2023.2191242" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2022.</strong> Han, S., Do, M. D., Kim, M., Cho, S., Choi, S. K., Choi, H. J. "A precise 3D scanning method using stereo vision with multipoint markers for rapid workpiece localization," <em>Journal of Mechanical Science and Technology</em>. 2022년 JMST 우수 논문상 수상. <a href="https://doi.org/10.1007/s12206-022-1142-2" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2021.</strong> Do, M., Choi, H., et al. "Multistep workpiece localization with automated symmetry identification for aerospace carbon fiber reinforced plastic components," <em>International Journal of Precision Engineering and Manufacturing-Green Technology</em>. <a href="https://doi.org/10.1007/s40684-021-00352-5" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2021.</strong> Lee, K.; Han, S.; Pham, V.H.; Cho, S.; Choi, H.-J.; Lee, J.; Noh, I.; Lee, S.W. "Multi-Objective Instance Weighting-Based Deep Transfer Learning Network for Intelligent Fault Diagnosis," <em>Applied Sciences</em>. <a href="https://doi.org/10.3390/app11052370" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2020.</strong> Jang, S., Yoo, K., Lim, H. et al. "Experimental and numerical study on jet properties and penetration of double-layered shaped charge," <em>Journal of Mechanical Science and Technology</em>. 2020년 JMST 우수 논문상 수상. <a href="https://doi.org/10.1007/s12206-020-1122-3" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2020.</strong> Do, M.D., Kim, M., Nguyen, D.H. et al. "Augmented-reality-assisted workpiece localization in rod-type flexible fixtures," <em>Journal of Mechanical Science and Technology</em>. <a href="https://doi.org/10.1007/s12206-020-0632-3" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2020.</strong> Hwang, S., Gorguluarslan, R. M., Choi, H.-J., and Choi, S.-K. "Integration of Dimension Reduction and Uncertainty Quantification in Designing Stretchable Strain Gauge Sensor," <em>Applied Sciences</em>. <a href="https://doi.org/10.3390/app10020643" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2019.</strong> V. H. Pham, S. Han, M. D. Do, H.-J. Choi. "A wavelet packet spectral subtraction and convolutional neural network based method for diagnosis of system health," <em>Journal of Mechanical Science and Technology</em>. <a href="https://doi.org/10.1007/s12206-019-1111-6" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2019.</strong> Huh, J., Pham Van, H., Han, S., Choi, H. J., and Choi, S.-K. "A Data-Driven Approach for the Diagnosis of Mechanical Systems Using Trained Subtracted Signal Spectrograms," <em>Sensors</em>. <a href="https://doi.org/10.3390/s19051055" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2019.</strong> Han, S., Choi, H. J., Choi, S.-K., and Oh, J.-S. "Fault Diagnosis of Planetary Gear Carrier Packs: A Class Imbalance and Multiclass Classification Problem," <em>International Journal of Precision Engineering and Manufacturing</em>. <a href="https://doi.org/10.1007/s12541-019-00082-4" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2019.</strong> Gorguluarslan, R. M., Grandhi, R. V., Choi, H. J., and Choi, S.-K. "Prediction assessment and validation of multiscale models for additively manufactured lattice structures under uncertainty," <em>Journal of Mechanical Science and Technology</em>. <a href="https://doi.org/10.1007/s12206-019-0238-9" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2018.</strong> Jang, S., Choi, H.-J., Choi, S.-K., and Oh, J.-S. "Inductive Design Exploration Method with Active Learning for Complex Design Problems," <em>Applied Sciences</em>. <a href="https://doi.org/10.3390/app8122418" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2018.</strong> Lee, Y., Han, S., Jang, S., Kim W., Choi, H. J., and Choi, S. K. "Multidisciplinary materials and geometry optimization of superheater tubes for advanced ultra-supercritical power boilers," <em>Journal of Mechanical Sicence and Technology</em>. <a href="https://doi.org/10.1007/s12206-018-0639-1" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2018.</strong> Alzaharani, M., Choi, S. K., and Choi, H. J. "Structural Health Monitoring of Damaged Beams Using an Improved Variational Vibration Model," <em>AIAA Journal</em>. <a href="https://doi.org/10.2514/1.J056299" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2018.</strong> Do, M. D., Son, Y., and Choi, H. J. "Optimal workpiece positioning in flexible fixtures for thin-walled components," <em>Computer-Aided Design</em>. <a href="https://doi.org/10.1016/j.cad.2017.09.002" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2017.</strong> Jang, S., Chung, J., Seo, S., Lee, S., Lee, Y., Lee, S., &amp; Choi, H.-J. "Enhancement of interfacial adhesion based on nanostructured alumina/aluminum laminates," <em>Composites Part B: Engineering</em>. <a href="http://dx.doi.org/10.1016/j.compositesb.2017.07.083" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2016.</strong> Park, Y., Seo, S., Jang, S., Choi, H. J., and Park, J. S. "Investigation of Shear Induced Exothermic Thermite Reaction in Al-Fe2O3 Epoxy Cast Composites," <em>Combustion Science and Technology</em>. <a href="http://dx.doi.org/10.1080/00102202.2015.1136294" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2016.</strong> Wu, F., Jeon, J., Moon, S. K., Choi, H. J., Son, H. "Voice Coil Navigation Sensor for Flexible Silicone Intubation," <em>IEEE/ASME Transactions on Mechatronics</em>. <a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=7270329" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2015.</strong> Park, J. and Choi, H. J. "Experiments and Numerical Analyses of HB400 and Aluminum Foam Sandwich Structure under Landmine Explosion," <em>Composite Structures</em>. <a href="http://dx.doi.org/10.1016/j.compstruct.2015.08.133" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2015.</strong> Han, S., Seo, S., and Choi, H. J. "A study on modeling customer preferences for conceptual design," <em>Journal of Mechanical Science and Technology</em>. <a href="http://dx.doi.org/10.1007/s12206-015-1105-y" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2015.</strong> Kim, D. Y., Lee, J. B., Jeong, C. H., Park, S. S., Jung J. Y., Choi, H. J., Lee, J. H., and Lee, S. H. "Effects of Curvature on the Flow Characteristics and Particle Behavior in the Flame Spray Process," <em>Materials Transactions</em>. <a href="http://doi.org/10.2320/matertrans.M2015299" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2015.</strong> Jang, S., Park Y. J., and Choi, H. J. "Integrated Design of Aluminum Foam Processing Parameters and Sandwich Panels under Uncertainty," <em>Journal of Mechanical Engineering Science</em>. <a href="http://dx.doi.org/10.1177/0954406214558341" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2015.</strong> Jang, S., Goh, C. H., and Choi, H. J. "Multiphase Design Exploration Method for Lightweight Structural Design: Example of Vehicle Mounted Antenna-Supporting Structure," <em>International Journal of Precision Engineering and Manufacturing-Green Technology</em>. <a href="http://dx.doi.org/10.1007/s40684-015-0034-7" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2014.</strong> Cho, M. and Choi H. J. "Optimization of surface texturing for contact between steel and ultrahigh molecular weight polyethylene under boundary lubrication," <em>Tribology Letters</em>. <a href="http://dx.doi.org/10.1007/s11249-014-0418-9" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2014.</strong> Han, S. and Choi, H. J. "Strategic conceptual design of mid-sized passenger aircraft based on future market performance prediction," <em>Concurrent Engineering: Research and Applications</em>. <a href="http://dx.doi.org/10.1177/1063293X14546671" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2014.</strong> Gorguluarslan, R., Kim, E.-S., Choi, S.-K., and Choi, H.-J. "Reliability Estimation of Washing Machine Spider Assembly Via Classification," <em>The International Journal of Advanced Manufacturing Technology</em>. <a href="http://dx.doi.org/10.1007/s00170-014-5745-3" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2014.</strong> Phamvan, H., Seok, J., and Choi, H. J. "Design and fabrication of cost-effective side-stem micromechanical disk resonator with large capacitive gap," <em>Electronics Letters</em>. <a href="http://dx.doi.org/10.1049/el.2014.0665" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2014.</strong> Wimarshana, B., Ryu, J., and Choi, H. J. "Neural Network Based Material Models with Bayesian Framework for Integrated Materials and Product Design," <em>International Journal of Precision Engineering and Manufacturing</em>. <a href="http://dx.doi.org/10.1007/s12541-013-0307-4" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2013.</strong> Jang, S and Choi, H. J. "Integrated Design of Blast Resistance Panels and Materials," <em>Composite Structures</em>. <a href="http://dx.doi.org/10.1016/j.compstruct.2013.02.016" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2013.</strong> Kwon, O., Yoon, Y.J., Moon, S.K, Choi, H.J., and Shim, J.H. "Estimation of Singapore's hourly solar radiation using hybrid-Markov transition matrices method," <em>International Journal of Precision Engineering and Manufacturing</em>. <a href="http://dx.doi.org/10.1007/s12541-013-0044-8" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2013.</strong> Lim, Y. W, Choi, H. J., and S. Idapalapati. "Design of Alporas Foam Cored Hybrid Sandwich Plates using Kriging Optimization," <em>Composite Structures</em>. <a href="http://dx.doi.org/10.1016/j.compstruct.2012.06.007" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2012.</strong> Withanage, C., T. Park, T. T. Duc, and H. J. Choi. "Dynamic Partial Least Square Path Modeling (PLSPM) for the Front-end Product Design and Development," <em>ASME Journal of Mechanical Design</em>. <a href="http://dx.doi.org/10.1115/1.4007448" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2012.</strong> Heidari, A., Y. J. Yoon, H. Son, and H. J. Choi. "Simulation-based Design of Disk Resonator Biosensors under Fabrication Uncertainty," <em>ASME Journal of Mechanical Design</em>. <a href="http://dx.doi.org/10.1115/1.4006144" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2012.</strong> Kyungsup Han, and H. J. Choi. "Toward the Development of Polydimethylsiloxane (PDMS) Microfluidic Capillary Biosensors," <em>Advanced Science Letters</em>. <a href="http://dx.doi.org/10.1166/asl.2012.2495" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2011.</strong> Kyungsup Han, Sona Lee, Kyoung Duck Seo, Sung-Up Choi, Jonghwi Lee, Jaehwi Lee, Byung Kook Kwak, H. J. Choi, and Dong Sung Kim. "Effect of Flow Rates on Generation of Monodisperse Clay-Poly(N-isopropylacrylamide) Embolic Microspheres Using Hydrodynamic Focusing Microfluidic Device," <em>Japanese Journal of Applied Physics</em>. <a href="http://jjap.jsap.jp/link?JJAP/50/06GL12/" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2011.</strong> Heidari, A. Y. J. Yoon, and H. J. Choi. "Analysis and Design of a High Performance and Low Cost Bio-mass Sensor based on the Radial Contour Mode Disk Resonator," <em>Microelectronic Engineering</em>. <a href="http://dx.doi.org/10.1016/j.mee.2011.01.054" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2011.</strong> Choi, H. J., T. H. Kim and S. M. Kim. "Design optimisation of nano-replicated bilayer wire-grid polariser," <em>Electronics Letters</em>. <a href="http://dx.doi.org/10.1049/el.2010.1803" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2010.</strong> Withanage C., T. Park, and H. J. Choi. "A Concept Evaluation Method for Strategic Product Design with Concurrent Consideration of Future Customer Requirements," <em>Concurrent Engineering: Research and Applications</em>. <a href="http://dx.doi.org/10.1177/1063293X10389796" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2010.</strong> Son, H., H. J. Choi and H. W. Park. "Design and dynamic analysis of an arch-type desktop reconfigurable machine," <em>International Journal of Machine Tools &amp; Manufacture</em>. <a href="http://dx.doi.org/10.1016/j.ijmachtools.2010.02.006" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2009.</strong> Choi, H. J. and J. K Allen. "A Metamodeling Approach for Uncertainty Analysis of Non-deterministic Systems," <em>ASME Journal of Mechanical Design</em>. <a href="http://dx.doi.org/10.1115/1.3087565" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2008.</strong> Choi, H. J., D. L. McDowell, J. K. Allen and F. Mistree. "An Inductive Design Exploration Method for Hierarchical Systems Design under Uncertainty," <em>Engineering Optimization</em>. <a href="http://dx.doi.org/10.1080/03052150701742201" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2008.</strong> Choi, H. J., D. L. McDowell, D. Rosen, J. K. Allen and F. Mistree. "An Inductive Design Exploration Method for Robust Multiscale Materials Design," <em>ASME Journal of Mechanical Design</em>. <a href="http://dx.doi.org/10.1115/1.2829860" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2007.</strong> Panchal, J. H., H. J. Choi, J. K. Allen, D. L. McDowell and F. Mistree. "A Systems Based Approach for Integrated Design of Materials, Products, and Design Process Chains," <em>Journal of Computer-Aided Materials Design</em>. <a href="http://dx.doi.org/10.1007/s10820-007-9062-0" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2007.</strong> McDowell, D. L., H. J. Choi, J. Panchal, R. Austin, J. K. Allen and F. Mistree. "Plasticity-Related Microstructure-Property Relations for Materials Design," <em>Key Engineering Materials</em>. <a href="http://dx.doi.org/10.4028/www.scientific.net/KEM.340-341.21" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2006.</strong> Allen, J. K., C. C. Seepersad, H. J. Choi, and F. Mistree. "Robust Design for Multiscale and Multidisciplinary Applications," <em>ASME Journal of Mechanical Design</em>. <a href="http://dx.doi.org/10.1115/1.2202880" target="_blank" rel="noopener noreferrer">DOI</a></li>
+              <li class="publication-entry publication-extra" hidden><strong>2005.</strong> Choi, H. J., R. Austin, J. K. Allen, D. L. McDowell, F. Mistree and D. J. Benson. "An Approach for Robust Design of Reactive Powder Metal Mixtures Based on Non-deterministic Micro-Scale Shock Simulation," <em>Journal of Computer-Aided Materials Design</em>. <a href="http://dx.doi.org/10.1007/s10820-005-1056-1" target="_blank" rel="noopener noreferrer">DOI</a></li>
+            </ol>
+          </section>
+
+          <section class="publication-group glass-panel publication-extra" hidden>
+            <h3>Books and Book Chapters</h3>
+            <ol class="publication-entries">
+              <li class="publication-entry"><strong>2009.</strong> McDowell, D. L., J. Panchal, H. J. Choi, C. C. Seepersad, J. K. Allen, and F. Mistree, <em>Integrated Design of Multiscale, Multifunctional Materials and Products</em>, Butterworth-Heinemann, New York. ISBN: 978-1856176620.</li>
+              <li class="publication-entry"><strong>2006.</strong> Panchal, J., H. J. Choi, J. K. Allen, D. Rosen and F. Mistree, "An Adaptable Service-based Framework for Distributed Product Realization," in <em>Collaborative Product Design &amp; Manufacturing Methodologies and Applications</em> (W. D. Li, Ed.), Springer, Bath, UK.</li>
+            </ol>
+          </section>
+
+          <div class="publication-toggle-row">
+            <button class="button button-secondary publications-toggle glass-button" type="button" aria-expanded="false">더보기</button>
+          </div>
+        </div>
+      </section>
+      
+      <section class="section" id="activities">
+        <div class="section-heading">
+          <p class="eyebrow">Activities</p>
+        </div>
+        <div class="activities-grid" id="activitiesGrid"></div>
+      </section>
+
+      <section class="activity-modal" id="activityModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="activityModalTitle">
+        <button class="activity-modal-close" type="button" aria-label="Close activity modal">&times;</button>
+        <img class="activity-modal-image" id="activityModalImage" src="" alt="">
+        <div class="activity-modal-body glass-panel">
+          <p class="activity-modal-date" id="activityModalDate"></p>
+          <h3 id="activityModalTitle"></h3>
+          <p id="activityModalSummary"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <div class="footer-inner">
+        <div>
+          <strong>ISDL</strong>
+          <p>Integrated Systems Design Laboratory</p>
+          <p>중앙대학교 기계공학부 시스템 융합설계 연구실</p>
+        </div>
+        <div>
+          <span>Contact</span>
+          <p>hjchoi@cau.ac.kr</p>
+          <p>+82-2-820-5787</p>
+        </div>
+        <div>
+          <span>Location</span>
+          <p>School of Mechanical Engineering</p>
+          <p>Chung-Ang University, Seoul</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script>
+    (function () {
+      var body = document.body;
+      var header = document.querySelector('.site-header');
+      var toggle = document.querySelector('.menu-toggle');
+      var closeButton = document.querySelector('.menu-close');
+      var nav = document.querySelector('#mobileNav');
+      var backdrop = document.querySelector('.menu-backdrop');
+      var topFab = document.querySelector('.top-fab');
+      var infoFab = document.querySelector('.info-fab');
+      var infoPopup = document.querySelector('#infoPopup');
+      var infoClose = document.querySelector('.info-close');
+      var activitiesGrid = document.querySelector('#activitiesGrid');
+      var activityModal = document.querySelector('#activityModal');
+      var activityModalClose = document.querySelector('.activity-modal-close');
+      var activityModalImage = document.querySelector('#activityModalImage');
+      var activityModalDate = document.querySelector('#activityModalDate');
+      var activityModalTitle = document.querySelector('#activityModalTitle');
+      var activityModalSummary = document.querySelector('#activityModalSummary');
+
+      var currentActivities = [];
+
+      var fallbackActivityData = [
+        {
+          date: '2025.09',
+          title: 'Do Mihn Duc, appointed as professor at HUST',
+          summary: 'ISDL alumni Dr. Do Mihn Duc was appointed as a professor at Hanoi University of Science and Technology.',
+          image: '../files/image.png',
+          alt: 'Do Mihn Duc appointment news thumbnail',
+          href: '#',
+          linkLabel: 'Read more about Do Mihn Duc appointment'
+        },
+        {
+          date: '2025.01',
+          title: 'Selected for Alchemist Project Phase 3',
+          summary: 'The lab was selected for phase 3 of the national Industrial Technology Alchemist Program.',
+          image: '../files/image.png',
+          alt: 'Alchemist project phase 3 news thumbnail',
+          href: '#',
+          linkLabel: 'Read more about Alchemist project phase 3 selection'
+        },
+        {
+          date: '2024.12',
+          title: 'Year-end graduation and research awards',
+          summary: 'ISDL celebrated graduates and recognized outstanding research achievements at the annual ceremony.',
+          image: '../files/image.png',
+          alt: 'Graduation and awards ceremony news thumbnail',
+          href: '#',
+          linkLabel: 'Read more about graduation and awards'
+        },
+        {
+          date: '2024.10',
+          title: 'International conference presentations',
+          summary: 'Lab members presented recent results in design AI and smart manufacturing at an international conference.',
+          image: '../files/image.png',
+          alt: 'International conference participation news thumbnail',
+          href: '#',
+          linkLabel: 'Read more about conference participation'
+        }
+      ];
+
+      if (!body || !header || !toggle || !nav || !backdrop) {
+        return;
+      }
+
+      function setMenuState(isOpen) {
+        header.classList.toggle('menu-open', isOpen);
+        body.classList.toggle('menu-open', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+
+      function setInfoState(isOpen) {
+        if (!infoFab || !infoPopup) {
+          return;
+        }
+        body.classList.toggle('info-open', isOpen);
+        infoFab.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        infoPopup.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      }
+
+      function closeMenu() {
+        setMenuState(false);
+      }
+
+      function closeInfo() {
+        setInfoState(false);
+      }
+
+      function syncTopFab() {
+        if (!topFab) {
+          return;
+        }
+        topFab.classList.toggle('is-visible', window.scrollY > 280);
+      }
+
+      function initPublicationsToggle() {
+        var toggle = document.querySelector('.publications-toggle');
+        var extraItems = document.querySelectorAll('.publication-extra');
+
+        if (!toggle || !extraItems.length) {
+          return;
+        }
+
+        toggle.addEventListener('click', function () {
+          var willOpen = toggle.getAttribute('aria-expanded') !== 'true';
+
+          extraItems.forEach(function (item) {
+            item.hidden = !willOpen;
+          });
+
+          toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+          toggle.textContent = willOpen ? '접기' : '더보기';
+        });
+      }
+
+      function initEducationAccordion() {
+        var triggers = document.querySelectorAll('.edu-trigger');
+
+        if (!triggers.length) {
+          return;
+        }
+
+        function setOpen(trigger, shouldOpen) {
+          var panelId = trigger.getAttribute('aria-controls');
+          var panel = panelId ? document.getElementById(panelId) : null;
+          var item = trigger.closest('.edu-item');
+          var inner = panel ? panel.querySelector('.edu-panel-inner') : null;
+
+          trigger.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+          if (item) {
+            item.classList.toggle('is-open', shouldOpen);
+          }
+          if (panel && inner) {
+            panel.style.maxHeight = shouldOpen ? inner.scrollHeight + 'px' : '0px';
+          }
+        }
+
+        triggers.forEach(function (trigger) {
+          var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+          setOpen(trigger, isOpen);
+
+          trigger.addEventListener('click', function () {
+            var willOpen = trigger.getAttribute('aria-expanded') !== 'true';
+
+            triggers.forEach(function (otherTrigger) {
+              setOpen(otherTrigger, false);
+            });
+
+            if (willOpen) {
+              setOpen(trigger, true);
+            }
+          });
+        });
+      }
+
+      function renderActivities(activityData) {
+        if (!activitiesGrid || !activityData || !activityData.length) {
+          return;
+        }
+
+        currentActivities = activityData.slice();
+
+        var cardsMarkup = activityData
+          .map(function (item, index) {
+            var alt = item.alt || (item.title ? item.title + ' 썸네일' : 'Activity thumbnail');
+
+            return '<article class="activity-card glass-panel" data-activity-index="' + index + '" role="button" tabindex="0" aria-label="' + (item.title || 'Activity') + '">'
+              + '<img class="activity-thumb" src="' + item.image + '" alt="' + alt + '">'
+              + '<div class="activity-body">'
+              + '<p class="activity-date">' + item.date + '</p>'
+              + '<h3>' + item.title + '</h3>'
+              + '</div>'
+              + '</article>';
+          })
+          .join('');
+
+        activitiesGrid.innerHTML = cardsMarkup;
+      }
+
+      function setActivityModalState(isOpen) {
+        if (!activityModal) {
+          return;
+        }
+        body.classList.toggle('activity-modal-open', isOpen);
+        activityModal.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      }
+
+      function closeActivityModal() {
+        setActivityModalState(false);
+      }
+
+      function openActivityModal(index) {
+        var item = currentActivities[index];
+
+        if (!item || !activityModal || !activityModalImage || !activityModalDate || !activityModalTitle || !activityModalSummary) {
+          return;
+        }
+
+        var alt = item.alt || (item.title ? item.title + ' 상세 이미지' : 'Activity detail image');
+
+        activityModalImage.src = item.image || '';
+        activityModalImage.alt = alt;
+        activityModalDate.textContent = item.date || '';
+        activityModalTitle.textContent = item.title || '';
+        activityModalSummary.textContent = item.summary || '';
+
+        setActivityModalState(true);
+      }
+
+      function loadActivities() {
+        if (!activitiesGrid) {
+          return;
+        }
+
+        fetch('./json/activities.json')
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error('Failed to load activities JSON');
+            }
+            return response.json();
+          })
+          .then(function (data) {
+            renderActivities(data);
+          })
+          .catch(function () {
+            renderActivities(fallbackActivityData);
+          });
+      }
+
+      if (activitiesGrid) {
+        activitiesGrid.addEventListener('click', function (event) {
+          var card = event.target.closest('.activity-card[data-activity-index]');
+
+          if (!card) {
+            return;
+          }
+
+          openActivityModal(Number(card.getAttribute('data-activity-index')));
+        });
+
+        activitiesGrid.addEventListener('keydown', function (event) {
+          var card = event.target.closest('.activity-card[data-activity-index]');
+
+          if (!card) {
+            return;
+          }
+
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openActivityModal(Number(card.getAttribute('data-activity-index')));
+          }
+        });
+      }
+
+      if (activityModalClose) {
+        activityModalClose.addEventListener('click', closeActivityModal);
+      }
+
+      if (activityModal) {
+        activityModal.addEventListener('click', function () {
+          closeActivityModal();
+        });
+      }
+
+      toggle.addEventListener('click', function () {
+        var isOpen = !header.classList.contains('menu-open');
+        if (isOpen) {
+          closeInfo();
+        }
+        setMenuState(isOpen);
+      });
+
+      if (closeButton) {
+        closeButton.addEventListener('click', closeMenu);
+      }
+
+      if (infoFab && infoPopup) {
+        infoFab.addEventListener('click', function () {
+          var isOpen = !body.classList.contains('info-open');
+          if (isOpen) {
+            closeMenu();
+          }
+          setInfoState(isOpen);
+        });
+      }
+
+      if (infoClose) {
+        infoClose.addEventListener('click', closeInfo);
+      }
+
+      if (topFab) {
+        topFab.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      backdrop.addEventListener('click', closeMenu);
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          closeActivityModal();
+          closeMenu();
+          closeInfo();
+        }
+      });
+
+      document.addEventListener('click', function (event) {
+        if (!infoFab || !infoPopup || !body.classList.contains('info-open')) {
+          return;
+        }
+        if (infoFab.contains(event.target) || infoPopup.contains(event.target)) {
+          return;
+        }
+        closeInfo();
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 980) {
+          closeMenu();
+        }
+
+        document.querySelectorAll('.edu-trigger[aria-expanded="true"]').forEach(function (trigger) {
+          setTimeout(function () {
+            var panelId = trigger.getAttribute('aria-controls');
+            var panel = panelId ? document.getElementById(panelId) : null;
+            var inner = panel ? panel.querySelector('.edu-panel-inner') : null;
+            if (panel && inner) {
+              panel.style.maxHeight = inner.scrollHeight + 'px';
+            }
+          }, 0);
+        });
+      });
+
+      window.addEventListener('scroll', syncTopFab, { passive: true });
+      syncTopFab();
+      loadActivities();
+      initEducationAccordion();
+      initPublicationsToggle();
+    })();
+  </script>
+</body>
+</html>
+
