@@ -377,7 +377,7 @@ body.info-open .info-popup {
 }
 
 .page-main {
-  padding: 32px 0 56px;
+  padding: 16px 0 56px;
 }
 
 .hero {
@@ -409,7 +409,7 @@ body.info-open .info-popup {
 .hero-backdrop {
   position: absolute;
   inset: 0;
-  background-image: url("http://isdl.cau.ac.kr/index.files/ISDL.jpg");
+  background-image: url("../files/ISDL.jpg");
   background-size: cover;
   background-position: center;
   transform: scale(1.02);
@@ -485,7 +485,7 @@ body.info-open .info-popup {
 }
 
 .hero-context-section {
-  padding-top: 8px;
+  padding-top: 16px !important;
 }
 
 .hero-context-block {
@@ -792,6 +792,112 @@ body.info-open .info-popup {
   display: flex;
   justify-content: center;
 }
+
+.research-actions {
+  width: 100%;
+  margin: 14px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.research-gallery {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(300px, 36vw);
+  gap: 14px;
+  overflow-x: auto;
+  padding: 2px 2px 10px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(28, 38, 58, 0.35) transparent;
+}
+
+.research-gallery::-webkit-scrollbar {
+  height: 6px;
+}
+
+.research-gallery::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.research-gallery::-webkit-scrollbar-thumb {
+  background: rgba(28, 38, 58, 0.35);
+  border-radius: 999px;
+}
+
+.research-gallery::-webkit-scrollbar-thumb:hover {
+  background: rgba(28, 38, 58, 0.5);
+}
+
+.research-gallery-item {
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(18, 23, 34, 0.12);
+  /* border-radius: 18px; */
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.research-gallery-item:hover,
+.research-gallery-item:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(14, 24, 44, 0.14);
+}
+
+.research-gallery-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+body.research-modal-open {
+  overflow: hidden;
+}
+
+.research-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 14, 24, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 42;
+  transition: opacity 180ms ease;
+}
+
+body.research-modal-open .research-modal {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.research-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 50%;
+  background: rgba(13, 20, 34, 0.44);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.research-modal-image {
+  width: min(92vw, 1320px);
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .activities-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -888,7 +994,7 @@ body.activity-modal-open .activity-modal {
   background: transparent;
   display: block;
   border-radius: 0;
-  padding: 30px 28px 240px;
+  padding: 50px 28px 160px;
   box-sizing: border-box;
 }
 
@@ -1275,9 +1381,9 @@ body.activity-modal-open .activity-modal-body {
     pointer-events: auto;
   }
 
-  .hero {
-    min-height: 78vh;
-  }
+    /* .hero {
+      min-height: 78vh;
+    } */
 
   .hero-copy {
     margin: 0 20px 20px;
@@ -1301,6 +1407,14 @@ body.activity-modal-open .activity-modal-body {
     max-height: none;
     border-radius: 0;
     padding: 0;
+  }
+
+  .research-gallery {
+    grid-auto-columns: minmax(260px, 70vw);
+  }
+
+  .research-gallery-item img {
+    height: 180px;
   }
 
   .activity-modal-image {
@@ -1378,10 +1492,10 @@ body.activity-modal-open .activity-modal-body {
     font-size: clamp(2.4rem, 11vw, 3.4rem);
   }
 
-  .hero {
+  /* .hero {
     min-height: 72vh;
     border-radius: 22px;
-  }
+  } */
 
   .hero-copy {
     margin: 0 14px 14px;

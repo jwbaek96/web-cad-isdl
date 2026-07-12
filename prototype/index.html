@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="../files/CAU_emblem.png">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="styles.css">
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:DeletedSystemTags msdt:dt="string"></mso:DeletedSystemTags>
+<mso:TagListTags msdt:dt="string"></mso:TagListTags>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
 </head>
 <body>
   <div class="site-shell">
@@ -96,7 +103,7 @@
             </ul>
           </section>
           <section class="hero-context-block">
-            <h2>RESEARCH PROJECTS <a href="#" aria-label="Download ISDL introduction">(Download ISDL introduction)</a></h2>
+            <h2>RESEARCH PROJECTS <a href="../docs/research_intro_2026.pdf" aria-label="Download ISDL introduction">(Download ISDL introduction)</a></h2>
             <ul>
               <li>애바타 및 인터랙티브 AI 스마트 제조 멀티버스 플랫폼 개발 - 산업부(알키미스트)</li>
               <li>고강도 고해상도 나노/마이크로 복합재 적층 제조 - 중견연구, 연구재단</li>
@@ -146,7 +153,7 @@
                   교내포탈아이디만 있으면 교내외 상관없이 사용 할 수 있습니다.
                 </p>
                 <p>
-                  <a class="edu-link" href="#" aria-label="Matlab 교내사용 및 설치 안내 바로가기">Matlab 교내사용 및 설치 안내 바로가기</a>
+                  <a class="edu-link" href="https://portal.cau.ac.kr" aria-label="Matlab 교내사용 및 설치 안내 바로가기">Matlab 교내사용 및 설치 안내 바로가기</a>
                 </p>
               </div>
             </div>
@@ -194,23 +201,15 @@
         <div class="section-heading">
           <p class="eyebrow">Research Areas</p>
         </div>
-        <div class="research-grid">
-          <article class="research-item">
-            <span>01</span>
-            <h3>Agentic AI for Design & Manufacturing</h3>
-            <p>설계 의사결정과 제조 프로세스를 연결하는 AI 연구.</p>
-          </article>
-          <article class="research-item">
-            <span>02</span>
-            <h3>Smart Manufacturing Systems</h3>
-            <p>모니터링, 예지진단, 공정 최적화 중심의 스마트 제조.</p>
-          </article>
-          <article class="research-item">
-            <span>03</span>
-            <h3>Additive Manufacturing</h3>
-            <p>적층 제조 공정과 소재, 시뮬레이션을 아우르는 연구.</p>
-          </article>
+        <div class="research-gallery" id="researchGallery" aria-label="Research image gallery"></div>
+        <div class="research-actions">
+          <a class="button button-secondary glass-button" href="../docs/research_intro.pdf" target="_blank" rel="noopener noreferrer">Research Document Download</a>
         </div>
+      </section>
+
+      <section class="research-modal" id="researchModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Research image preview">
+        <button class="research-modal-close" type="button" aria-label="Close research preview">&times;</button>
+        <img class="research-modal-image" id="researchModalImage" src="" alt="">
       </section>
 
       <section class="section" id="members">
@@ -489,6 +488,10 @@
       var activityModalDate = document.querySelector('#activityModalDate');
       var activityModalTitle = document.querySelector('#activityModalTitle');
       var activityModalSummary = document.querySelector('#activityModalSummary');
+      var researchGallery = document.querySelector('#researchGallery');
+      var researchModal = document.querySelector('#researchModal');
+      var researchModalImage = document.querySelector('#researchModalImage');
+      var researchModalClose = document.querySelector('.research-modal-close');
 
       var currentActivities = [];
 
@@ -625,6 +628,61 @@
         });
       }
 
+      function setResearchModalState(isOpen) {
+        if (!researchModal) {
+          return;
+        }
+
+        body.classList.toggle('research-modal-open', isOpen);
+        researchModal.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      }
+
+      function closeResearchModal() {
+        setResearchModalState(false);
+      }
+
+      function openResearchModal(imageSrc, imageAlt) {
+        if (!researchModal || !researchModalImage) {
+          return;
+        }
+
+        researchModalImage.src = imageSrc;
+        researchModalImage.alt = imageAlt;
+        setResearchModalState(true);
+      }
+
+      function initResearchGallery() {
+        if (!researchGallery) {
+          return;
+        }
+
+        var items = [];
+        for (var i = 1; i <= 10; i += 1) {
+          items.push({
+            src: '../files/research' + i + '.png',
+            alt: 'Research image ' + i
+          });
+        }
+
+        researchGallery.innerHTML = items
+          .map(function (item) {
+            return '<button class="research-gallery-item glass-panel" type="button" data-src="' + item.src + '" data-alt="' + item.alt + '">'
+              + '<img src="' + item.src + '" alt="' + item.alt + '">'
+              + '</button>';
+          })
+          .join('');
+
+        researchGallery.addEventListener('click', function (event) {
+          var button = event.target.closest('.research-gallery-item');
+
+          if (!button) {
+            return;
+          }
+
+          openResearchModal(button.getAttribute('data-src'), button.getAttribute('data-alt'));
+        });
+      }
+
       function renderActivities(activityData) {
         if (!activitiesGrid || !activityData || !activityData.length) {
           return;
@@ -734,6 +792,18 @@
         });
       }
 
+      if (researchModalClose) {
+        researchModalClose.addEventListener('click', closeResearchModal);
+      }
+
+      if (researchModal) {
+        researchModal.addEventListener('click', function (event) {
+          if (event.target === researchModal) {
+            closeResearchModal();
+          }
+        });
+      }
+
       toggle.addEventListener('click', function () {
         var isOpen = !header.classList.contains('menu-open');
         if (isOpen) {
@@ -775,6 +845,7 @@
       document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
           closeActivityModal();
+          closeResearchModal();
           closeMenu();
           closeInfo();
         }
@@ -809,6 +880,7 @@
 
       window.addEventListener('scroll', syncTopFab, { passive: true });
       syncTopFab();
+      initResearchGallery();
       loadActivities();
       initEducationAccordion();
       initPublicationsToggle();
