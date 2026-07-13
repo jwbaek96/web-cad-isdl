@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISDL Prototype 2 - Activities</title>
+  <meta name="description" content="ISDL prototype2 multi-page concept.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../files/CAU_emblem.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <strong>Integrated Systems Design Laboratory</strong>
+        <span>Activities</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-label="메뉴 열기">
+        <span class="menu-toggle-icon" aria-hidden="true">
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+        </span>
+      </button>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="education.html">Education</a>
+        <a href="research.html">Research</a>
+        <a href="members.html">Members</a>
+        <a href="publications.html">Publications</a>
+        <a href="activities.html">Activities</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="fullscreen-section">
+      <p class="kicker">Activities</p>
+      <h1>LATEST NEWS</h1>
+      <div class="activity-grid">
+        <article class="activity-item" role="button" tabindex="0">
+          <img src="../files/no image.jpg" alt="activity 1">
+          <div><strong>2014.07</strong><p>현대 모토 그룹으로부터 우수 프로젝트상 수상.</p></div>
+        </article>
+        <article class="activity-item" role="button" tabindex="0">
+          <img src="../files/no image.jpg" alt="activity 2">
+          <div><strong>2010.12</strong><p>IEEE 국제 산업공학 및 공학 경영학회 우수 논문상 수상.</p></div>
+        </article>
+        <article class="activity-item" role="button" tabindex="0">
+          <img src="../files/no image.jpg" alt="activity 3">
+          <div><strong>2024.12</strong><p>SAMPLE DATA</p></div>
+        </article>
+        <article class="activity-item" role="button" tabindex="0">
+          <img src="../files/no image.jpg" alt="activity 4">
+          <div><strong>2024.10</strong><p>SAMPLE DATA</p></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <section class="activity-modal" id="activityModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="activity-modal-close" id="activityModalClose" type="button" aria-label="Close activity modal">&times;</button>
+    <div class="activity-modal-inner">
+      <img class="activity-modal-image" id="activityModalImage" src="" alt="">
+      <div class="activity-modal-body">
+        <p id="activityModalDate"></p>
+        <h3 id="activityModalTitle"></h3>
+        <p id="activityModalSummary"></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    ISDL Prototype2 · Chung-Ang University
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

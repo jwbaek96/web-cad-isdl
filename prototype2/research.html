@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISDL Prototype 2 - Research</title>
+  <meta name="description" content="ISDL prototype2 multi-page concept.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../files/CAU_emblem.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <strong>Integrated Systems Design Laboratory</strong>
+        <span>Research</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-label="메뉴 열기">
+        <span class="menu-toggle-icon" aria-hidden="true">
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+        </span>
+      </button>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="education.html">Education</a>
+        <a href="research.html">Research</a>
+        <a href="members.html">Members</a>
+        <a href="publications.html">Publications</a>
+        <a href="activities.html">Activities</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="fullscreen-section">
+      <p class="kicker">Research</p>
+      <h1>RESEARCH AREAS</h1>
+      <div class="cta-row">
+        <a class="button primary" href="../docs/research_intro.pdf" target="_blank" rel="noopener noreferrer">Research Document Download</a>
+      </div>
+      <div class="research-gallery" id="researchGallery" aria-label="Research gallery"></div>
+    </section>
+
+    <section class="research-modal" id="researchModal" aria-hidden="true">
+      <button id="researchModalClose" type="button" aria-label="Close">&times;</button>
+      <img id="researchModalImage" src="" alt="">
+    </section>
+  </main>
+
+  <footer class="footer">
+    ISDL Prototype2 · Chung-Ang University
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

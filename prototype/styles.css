@@ -636,7 +636,7 @@ body.info-open .info-popup {
   border: 0;
   text-align: left;
   padding: 15px 48px 15px 16px;
-  background: #e1e1e199;
+  background: #e1e1e14f;
   color: var(--ink);
   font-size: 1.05rem;
   font-family: "Noto Sans KR", "Segoe UI", sans-serif;
@@ -699,8 +699,8 @@ body.info-open .info-popup {
 }
 
 .edu-link {
-  color: #7f1fa8;
-  text-decoration: underline;
+  color: #1f68a8;
+  /* text-decoration: underline; */
   text-underline-offset: 2px;
 }
 
@@ -1357,6 +1357,14 @@ body.activity-modal-open .activity-modal-body {
     width: 100%;
     padding: 14px 4px;
     border-bottom: 1px solid rgba(18, 23, 34, 0.06);
+    color: var(--ink);
+    transition: color 160ms ease;
+  }
+
+  .mobile-nav a:hover,
+  .mobile-nav a:focus-visible,
+  .mobile-nav a:active {
+    color: var(--cau-blue);
   }
 
   .mobile-nav a:last-child {

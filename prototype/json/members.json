@@ -1,0 +1,222 @@
+﻿{
+    "professor":  {
+                      "role":  "Professor",
+                      "name":  "최해진 Professor Hae-Jin Choi, Ph.D.",
+                      "summary":  "School of Mechanical Engineering, Chung-Ang University",
+                      "image":  "../files/image.png",
+                      "imageAlt":  "Professor profile placeholder image",
+                      "email":  "hjchoi@cau.ac.kr",
+                      "phone":  "+82-2-820-5787",
+                      "education":  [
+                                        "Ph.D., Mechanical Engineering, Georgia Institute of Technology, Atlanta, USA (2002-2005)",
+                                        "M.S., 기계공학과, 연세대학교, 서울, 대한민국 (1995-1997)",
+                                        "B.S., 기계공학과, 연세대학교, 서울, 대한민국 (1989-1995)"
+                                    ],
+                      "career":  [
+                                     "중앙대학교 기계공학부 교수 (2010-현재)",
+                                     "싱가폴 난양공대 기계항공공학부 조교수 (2007-2009)",
+                                     "Georgia Institute of Technology, Atlanta, USA, PostDoc (2006-2007)"
+                                 ],
+                      "cvUrl":  "https://livecauac-my.sharepoint.com/:b:/g/personal/hjchoi_cau_ac_kr/EaAqORZVbrRAh3ZVWCpN2q0BdrfDkRmjcLHnXUXWvcV49A?e=7Eh1RG",
+                      "cvLabel":  "Download CV"
+                  },
+    "associateProfessor":  {
+                                 "title":  "Associate Professor",
+                                 "items":  [
+                                               {
+                                                   "name":  "도민득 박사 (Do Mihn Duc)",
+                                                   "description":  "Samsung Display, Vietnam",
+                                                   "image":  "../files/image.png",
+                                                   "imageAlt":  "Do Mihn Duc placeholder portrait"
+                                               },
+                                               {
+                                                   "name":  "팜 반 후안 박사 (Huan PHAM)",
+                                                   "description":  "Prognosis and health monitoring, Smart Manufacturing",
+                                                   "image":  "../files/image.png",
+                                                   "imageAlt":  "Huan PHAM placeholder portrait"
+                                               },
+                                               {
+                                                   "name":  "임형남",
+                                                   "description":  "넥센타이어",
+                                                   "image":  "../files/image.png",
+                                                   "imageAlt":  "임형남 placeholder portrait"
+                                               },
+                                               {
+                                                   "name":  "Hung Nguyen",
+                                                   "description":  "Alumni profile update pending",
+                                                   "image":  "../files/image.png",
+                                                   "imageAlt":  "Hung Nguyen placeholder portrait"
+                                               }
+                                           ]
+                             },
+    "students":  {
+                     "title":  "Students",
+                     "columns":  [
+                                     "학위과정",
+                                     "이름",
+                                     "연구분야"
+                                 ],
+                     "rows":  [
+                                  [
+                                      "박사과정",
+                                      "김민건",
+                                      "Materials AI, Image-based AI"
+                                  ],
+                                  [
+                                      "박사과정",
+                                      "한승재",
+                                      "Additive Manufacturing"
+                                  ],
+                                  [
+                                      "박사과정",
+                                      "이건휘",
+                                      "Agentic AI for Design / Manufacturing"
+                                  ],
+                                  [
+                                      "석사과정",
+                                      "변율석",
+                                      "Smart Manufacturing, Unmanned Aerial System (UAS), Military Defence"
+                                  ],
+                                  [
+                                      "석사과정",
+                                      "김솔찬",
+                                      "Agentic AI for Design / Manufacturing"
+                                  ],
+                                  [
+                                      "석사과정",
+                                      "조수현",
+                                      "Unmanned Aerial System (UAS), Military Defence"
+                                  ],
+                                  [
+                                      "석사과정",
+                                      "Liang JunHui",
+                                      "Additive Manufacturing"
+                                  ]
+                              ]
+                 },
+    "alumni":  {
+                   "title":  "Alumni",
+                   "columns":  [
+                                   "학위",
+                                   "이름",
+                                   "직장"
+                               ],
+                   "rows":  [
+                                [
+                                    "박사",
+                                    "장성우",
+                                    "국방과학연구소"
+                                ],
+                                [
+                                    "박사",
+                                    "한순영",
+                                    "LG화학"
+                                ],
+                                [
+                                    "박사",
+                                    "Do Mihn Duc",
+                                    "Hanoi University of Science and Technology(HUST), Professor"
+                                ],
+                                [
+                                    "박사",
+                                    "Pham Van Huan",
+                                    "한국표준과학연구원, 광영측정표준팀, 박사후 연구원"
+                                ],
+                                [
+                                    "석사",
+                                    "한경섭",
+                                    "싱가폴 난양공대 박사, 아모레퍼시픽"
+                                ],
+                                [
+                                    "석사",
+                                    "유제준",
+                                    "현대건설"
+                                ],
+                                [
+                                    "석사",
+                                    "박용진",
+                                    "현대기아자동차"
+                                ],
+                                [
+                                    "석사",
+                                    "백운경",
+                                    "LG전자"
+                                ],
+                                [
+                                    "석사",
+                                    "서석훈",
+                                    "개인사업"
+                                ],
+                                [
+                                    "석사",
+                                    "이윤하",
+                                    "LG디스플레이"
+                                ],
+                                [
+                                    "석사",
+                                    "손영훈",
+                                    "원프리딕트"
+                                ],
+                                [
+                                    "석사",
+                                    "김원재",
+                                    "이테크건설"
+                                ],
+                                [
+                                    "석사",
+                                    "유기민",
+                                    "ASML"
+                                ],
+                                [
+                                    "석사",
+                                    "허지웅",
+                                    "ASML"
+                                ],
+                                [
+                                    "석사",
+                                    "Hung Nguyen",
+                                    "-"
+                                ],
+                                [
+                                    "석사",
+                                    "임형남",
+                                    "넥센타이어"
+                                ],
+                                [
+                                    "석사",
+                                    "이기훈",
+                                    "SK"
+                                ],
+                                [
+                                    "석사",
+                                    "조승연",
+                                    "싱가폴 난양공대 박사과정"
+                                ],
+                                [
+                                    "석사",
+                                    "심영선",
+                                    "삼성전자"
+                                ],
+                                [
+                                    "석사",
+                                    "서혜련",
+                                    "삼성전자"
+                                ],
+                                [
+                                    "석사",
+                                    "주송현",
+                                    "퍼듀 대 박사과정"
+                                ],
+                                [
+                                    "석사",
+                                    "김현성",
+                                    "-"
+                                ],
+                                [
+                                    "석사",
+                                    "신명현",
+                                    "LG에너지솔루션"
+                                ]
+                            ]
+               }
+}
