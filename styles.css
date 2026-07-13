@@ -56,7 +56,7 @@ body::before {
   bottom: -28px;
   width: min(36vw, 460px);
   aspect-ratio: 1;
-  background: url("../files/CAU_emblem.png") no-repeat center / contain;
+  background: url("files/CAU_emblem.png") no-repeat center / contain;
   opacity: 0.12;
   filter: grayscale(1) saturate(0) contrast(0.92);
   pointer-events: none;
@@ -409,7 +409,7 @@ body.info-open .info-popup {
 .hero-backdrop {
   position: absolute;
   inset: 0;
-  background-image: url("../files/ISDL.jpg");
+  background-image: url("files/ISDL.jpg");
   background-size: cover;
   background-position: center;
   transform: scale(1.02);

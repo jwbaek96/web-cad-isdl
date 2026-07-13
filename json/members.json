@@ -3,7 +3,7 @@
                       "role":  "Professor",
                       "name":  "최해진 Professor Hae-Jin Choi, Ph.D.",
                       "summary":  "School of Mechanical Engineering, Chung-Ang University",
-                      "image":  "../files/image.png",
+                      "image":  "files/image.png",
                       "imageAlt":  "Professor profile placeholder image",
                       "email":  "hjchoi@cau.ac.kr",
                       "phone":  "+82-2-820-5787",
@@ -26,25 +26,25 @@
                                                {
                                                    "name":  "도민득 박사 (Do Mihn Duc)",
                                                    "description":  "Samsung Display, Vietnam",
-                                                   "image":  "../files/image.png",
+                                                   "image":  "files/image.png",
                                                    "imageAlt":  "Do Mihn Duc placeholder portrait"
                                                },
                                                {
                                                    "name":  "팜 반 후안 박사 (Huan PHAM)",
                                                    "description":  "Prognosis and health monitoring, Smart Manufacturing",
-                                                   "image":  "../files/image.png",
+                                                   "image":  "files/image.png",
                                                    "imageAlt":  "Huan PHAM placeholder portrait"
                                                },
                                                {
                                                    "name":  "임형남",
                                                    "description":  "넥센타이어",
-                                                   "image":  "../files/image.png",
+                                                   "image":  "files/image.png",
                                                    "imageAlt":  "임형남 placeholder portrait"
                                                },
                                                {
                                                    "name":  "Hung Nguyen",
                                                    "description":  "Alumni profile update pending",
-                                                   "image":  "../files/image.png",
+                                                   "image":  "files/image.png",
                                                    "imageAlt":  "Hung Nguyen placeholder portrait"
                                                }
                                            ]
