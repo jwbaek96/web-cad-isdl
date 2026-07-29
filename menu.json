@@ -1,0 +1,10 @@
+{
+    "items": [
+        { "name": "Members", "link": "/members.html" },
+        { "name": "Research", "link": "/research.html" },
+        { "name": "Publications", "link": "/publications.html" },
+        { "name": "IPs", "link": "/ips.html" },
+        { "name": "Lecture", "link": "/lecture.html" },
+        { "name": "News & Award", "link": "/news.html" }
+    ]
+}

@@ -1,0 +1,212 @@
+/* Basic Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+}
+
+a {
+    color: #0056b3;
+}
+
+.container {
+    width: 1170px;
+    margin: 0 auto;
+}
+
+/* Header */
+#header {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#header .logo h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+#gnb {
+    float: right;
+}
+
+#gnb ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#gnb ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+#gnb ul li a {
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* Main */
+#main {
+    padding: 40px 0;
+}
+
+.welcome-section {
+    margin-bottom: 40px;
+}
+
+.welcome-section pre {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.research-highlights {
+    margin-top: 40px;
+}
+
+/* Members Page */
+#members-content h3 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.member-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 30px;
+    height: 100%;
+}
+
+.member-card p {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.member-photo {
+    border-radius: 4px;
+}
+
+/* Research Page */
+.research-category h3 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.research-card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    transition: box-shadow 0.3s ease-in-out;
+    height: 100%;
+}
+
+.research-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.research-card img {
+    width: 100%;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.research-card-body {
+    padding: 15px;
+}
+
+.research-card-body h4 {
+    margin-top: 0;
+    font-size: 16px;
+}
+
+.research-card-body p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+/* Publications Page */
+.publication-category h3 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.publication-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.publication-list li {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.publication-list li p {
+    margin: 0;
+    padding-right: 120px; /* Space for the button */
+    position: relative;
+}
+
+.publication-list li a {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* IPs Page */
+.ip-category h3 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.ip-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.ip-list li {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+}
+
+/* News & Award Page */
+.newsaward-category h3 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.newsaward-item {
+    margin-bottom: 30px;
+}
+
+
+/* Footer */
+#footer {
+    padding: 20px 0;
+    background-color: #f8f8f8;
+    border-top: 1px solid #eee;
+    text-align: center;
+}

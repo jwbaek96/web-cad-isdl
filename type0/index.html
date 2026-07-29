@@ -204,7 +204,7 @@
         </div>
         <div class="research-gallery" id="researchGallery" aria-label="Research image gallery"></div>
         <div class="research-actions">
-          <a class="button button-secondary glass-button" href="../docs/research_intro.pdf" target="_blank" rel="noopener noreferrer">Research Document Download</a>
+          <a class="button button-secondary glass-button" href="../docs/research_intro_2026.pdf" target="_blank" rel="noopener noreferrer">Research Document Download</a>
         </div>
       </section>
 
@@ -220,7 +220,7 @@
         <div class="members-layout">
           <article class="member-profile glass-panel">
             <div class="member-profile-media">
-              <img class="member-photo" src="../files/image.png" alt="Professor profile placeholder image">
+              <img class="member-photo" src="../files/members/director.png" alt="Professor profile placeholder image">
             </div>
             <div class="member-profile-body">
               <p class="member-role">Associate Professor</p>
@@ -320,28 +320,28 @@
             <h3>Associate Professors</h3>
             <div class="alumni-cards">
               <article class="alumni-card glass-panel">
-                <img class="alumni-photo" src="../files/image.png" alt="Do Mihn Duc placeholder portrait">
+                <img class="alumni-photo" src="../files/members/director.png" alt="Do Mihn Duc placeholder portrait">
                 <div>
                   <strong>도민득 박사 (Do Mihn Duc)</strong>
                   <p>Samsung Display, Vietnam</p>
                 </div>
               </article>
               <article class="alumni-card glass-panel">
-                <img class="alumni-photo" src="../files/image.png" alt="Huan PHAM placeholder portrait">
+                <img class="alumni-photo" src="../files/members/director.png" alt="Huan PHAM placeholder portrait">
                 <div>
                   <strong>팜 반 후안 박사 (Huan PHAM)</strong>
                   <p>Prognosis and health monitoring, Smart Manufacturing</p>
                 </div>
               </article>
               <article class="alumni-card glass-panel">
-                <img class="alumni-photo" src="../files/image.png" alt="임형남 placeholder portrait">
+                <img class="alumni-photo" src="../files/members/director.png" alt="임형남 placeholder portrait">
                 <div>
                   <strong>임형남</strong>
                   <p>넥센타이어</p>
                 </div>
               </article>
               <article class="alumni-card glass-panel">
-                <img class="alumni-photo" src="../files/image.png" alt="Hung Nguyen placeholder portrait">
+                <img class="alumni-photo" src="../files/members/director.png" alt="Hung Nguyen placeholder portrait">
                 <div>
                   <strong>Hung Nguyen</strong>
                   <p>Alumni profile update pending</p>
@@ -682,7 +682,7 @@
           return;
         }
 
-        fetch('./json/activities.json')
+        fetch('../json/activities.json')
           .then(function (response) {
             if (!response.ok) {
               throw new Error('Failed to load activities JSON');
@@ -800,7 +800,7 @@
           return;
         }
 
-        fetch('./json/members.json')
+        fetch('../json/members.json')
           .then(function (response) {
             if (!response.ok) {
               throw new Error('Failed to load members JSON');
@@ -907,7 +907,7 @@
           return;
         }
 
-        fetch('./json/publications.json')
+        fetch('../json/publications.json')
           .then(function (response) {
             if (!response.ok) {
               throw new Error('Failed to load publications JSON');
@@ -925,7 +925,7 @@
       }
 
       function loadRecruitAlertMessage() {
-        fetch('./json/recruit-alert.json')
+        fetch('../json/recruit-alert.json')
           .then(function (response) {
             if (!response.ok) {
               throw new Error('Failed to load recruit alert JSON');
