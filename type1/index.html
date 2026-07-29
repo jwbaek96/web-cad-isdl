@@ -1,35 +1,27 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISDL</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ISDL — Integrated Systems Design Laboratory</title>
+    <meta name="description" content="시스템융합설계연구실(ISDL) — 중앙대학교 기계공학부, 3D 프린팅 · 인공지능 · 스마트 제조 · 국방기술 연구실">
+    <link rel="icon" type="image/png" href="../files/CAU_emblem.png">
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header id="header">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><h1>ISDL</h1></a>
-            </div>
-            <nav id="gnb">
-            </nav>
-        </div>
-    </header>
+  </head>
+  <body>
+    <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+    <nav id="sidebar" class="sidebar-nav"></nav>
 
-    <main id="main">
-        <!-- Main content will be loaded here -->
-    </main>
+    <header class="site-header" id="site-header"></header>
+    
+    <div id="app"></div>
 
-    <footer id="footer">
-        <div class="container">
-            <p>&copy; 2026 ISDL. All Rights Reserved.</p>
-        </div>
+    <footer class="site-footer">
+      <p>© 2026 Integrated Systems Design Laboratory (ISDL), School of Mechanical Engineering, Chung-Ang University.<br>
+        Contact: Prof. Hae-Jin Choi (<a href="mailto:hjchoi@cau.ac.kr">hjchoi@cau.ac.kr</a>)</p>
     </footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
-</body>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
