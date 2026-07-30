@@ -562,14 +562,31 @@ const SITE_DATA = {
     "Achievements": [
       {
         "Title": "Sample Title",
+        "Date": "YYYY-MM-DD",
         "Main Image": "../files/no image.jpg",
         "Images": ["../files/no image.jpg", "../files/no image.jpg", "../files/no image.jpg"],
         "Text": "Sample text"
+      },
+      {
+        "Title": "Sample Title",
+        "Date": "YYYY-MM-DD",
+        "Main Image": "../files/no image.jpg",
+        "Images": ["../files/no image.jpg", "../files/no image.jpg", "../files/no image.jpg"],
+        "Text": "Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text"
       }
     ],
     "Research&Projects": [
       {
         "Title": "Sample Title",
+        "Date": "YYYY-MM-DD",
+        "Main Image": "../files/no image.jpg",
+        "Images": ["../files/no image.jpg", "../files/no image.jpg", "../files/no image.jpg"],
+        "Text": "Sample text"
+      },
+      {
+        "Title": "Sample Title",
+        "Date": "YYYY-MM-DD",
+        "Main Image": "../files/no image.jpg",
         "Images": ["../files/no image.jpg", "../files/no image.jpg", "../files/no image.jpg"],
         "Text": "Sample text"
       }
@@ -577,6 +594,15 @@ const SITE_DATA = {
     "Lab Activities": [
       {
         "Title": "Sample Title",
+        "Date": "YYYY-MM-DD",
+        "Main Image": "../files/no image.jpg",
+        "Images": ["../files/no image.jpg", "../files/no image.jpg", "../files/no image.jpg"],
+        "Text": "Sample text"
+      },
+      {
+        "Title": "Sample Title",
+        "Date": "YYYY-MM-DD",
+        "Main Image": "../files/no image.jpg",
         "Images": ["../files/no image.jpg", "../files/no image.jpg", "../files/no image.jpg"],
         "Text": "Sample text"
       }

@@ -11,7 +11,7 @@ const UNIV_KO = "중앙대학교 기계공학부";
 const UNIV_EN = "School of Mechanical Engineering, Chung-Ang University";
 
 const app = document.getElementById("app");
-
+const toggle = document.getElementById('sidebar-toggle');
 /* ---------- helpers ---------- */
 
 function el(html) {
@@ -124,9 +124,6 @@ function renderHeader(activeKey, activeChild) {
   header.innerHTML = `
     <div class="nav-wrap">
        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"><span></span></button>
-      <a class="brand" href="#/home">
-        <span class="brand-name">${LAB_SHORT}<small>${LAB_NAME_EN}</small></span>
-      </a>
       <nav class="primary-nav" id="primary-nav">
         <ul>${navList}</ul>
       </nav>
@@ -137,20 +134,30 @@ function renderHeader(activeKey, activeChild) {
 
 /* ---------- Sidebar rendering ---------- */
 function renderSidebar() {
+    console.log("renderSidebar");
     const sidebar = document.getElementById("sidebar");
     const { key: activeKey, child: activeChild } = parseHash();
 
     const menuHtml = NAV.map(item => {
-        const hasChildren = item.children && item.children.length > 0;
-        let isActive = item.key === activeKey;
-        let isOpen = isActive && hasChildren && activeChild;
+      const hasChildren = item.children && item.children.length > 0;
+      const isParentActive = item.key === activeKey && !activeChild;
+      const isSectionActive = item.key === activeKey;
 
-        const childHtml = hasChildren ? `
+      // 부모 또는 자식 페이지라면 펼침
+      let isOpen = hasChildren && isSectionActive;
+
+      const childHtml = hasChildren ? `
             <ul class="sidebar-submenu">
                 ${item.children.map(c => {
-                    const isChildActive = isActive && activeChild === c.label;
-                    if (isChildActive) isOpen = true; // Ensure parent is open if child is active
-                    return `<li class="${isChildActive ? 'active' : ''}"><a href="${c.path}">${esc(c.label)}</a></li>`;
+                    const isChildActive = item.key === activeKey && activeChild === c.label;
+
+                    return `
+                        <li>
+                            <a href="${c.path}" class="${isChildActive ? 'active' : ''}">
+                                ${esc(c.label)}
+                            </a>
+                        </li>
+                    `;
                 }).join('')}
             </ul>
         ` : '';
@@ -158,22 +165,28 @@ function renderSidebar() {
         return `
             <li class="${isOpen ? 'open' : ''}">
                 <div class="nav-link">
-                    <a href="${item.path}">${esc(item.label)}</a>
-                    ${hasChildren ? '<span class="dropdown-icon"></span>' : ''}
+                  <span class="dropdown-icon-container">
+                  ${hasChildren ? '<span class="dropdown-icon"></span>' : ''}
+                  </span>
+                    <a href="${item.path}" class="${isParentActive ? 'active' : ''}">
+                        ${esc(item.label)}
+                    </a>
                 </div>
                 ${childHtml}
             </li>
         `;
-    }).join('');
+  }).join('');
 
-    sidebar.innerHTML = `<ul>${menuHtml}</ul>`;
+  sidebar.innerHTML = `<ul>${menuHtml}</ul>`;
 }
 
-
 function initSidebar() {
+    console.log("initSidebar");
     const sidebar = document.getElementById('sidebar');
     const backdrop = document.getElementById('sidebar-backdrop');
     const toggle = document.getElementById('sidebar-toggle');
+
+    const siteHeader = document.getElementById('site-header');
 
     function closeSidebar() {
         sidebar.classList.remove('open');
@@ -186,6 +199,7 @@ function initSidebar() {
         sidebar.classList.toggle('open');
         backdrop.classList.toggle('open');
         toggle.classList.toggle('open');
+        siteHeader.classList.toggle('open');
     });
 
     backdrop.addEventListener('click', closeSidebar);
@@ -201,6 +215,12 @@ function initSidebar() {
         const dropdownIcon = e.target.closest('.dropdown-icon');
         if (dropdownIcon) {
             dropdownIcon.closest('li').classList.toggle('open');
+        }
+    });
+    // ESC 키로 사이드바 닫기
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+            closeSidebar();
         }
     });
 }
@@ -520,7 +540,7 @@ function renderPublications(activeTab) {
     })
     .join("");
 
-  app.innerHTML = pageShell("Publications", tabBar + panels, false);
+  app.innerHTML = pageShell("Publications", tabBar + panels, true);
   wireTabs("publications");
 }
 
@@ -553,7 +573,7 @@ function renderIPs(activeTab) {
     })
     .join("");
 
-  app.innerHTML = pageShell("IPs", tabBar + panels, false);
+  app.innerHTML = pageShell("IPs", tabBar + panels, true);
   wireTabs("ips");
 }
 
@@ -595,8 +615,11 @@ function renderNewsAward(activeTab) {
               .map(
                 (it) => `
           <div class="news-card">
-            <div class="news-thumb">Image</div>
+            <div class="news-thumb">
+              <img src="${esc(it["Main Image"] || "../files/no image.jpg")}" alt="${esc(it.Title)}" />
+            </div>
             <div class="news-body">
+              <div class="news-date">${esc(it.Date)}</div>
               <h3>${esc(it.Title)}</h3>
               <p>${esc(it.Text)}</p>
             </div>
@@ -609,7 +632,7 @@ function renderNewsAward(activeTab) {
     })
     .join("");
 
-  app.innerHTML = pageShell("News / Award", tabBar + panels, false);
+  app.innerHTML = pageShell("News / Award", tabBar + panels, true);
   wireTabs("news-award");
 }
 
@@ -663,7 +686,7 @@ function route() {
     default:
       renderHome();
   }
-
+  initSidebar();
   window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
 }
 
@@ -671,7 +694,7 @@ window.addEventListener("hashchange", route);
 window.addEventListener("DOMContentLoaded", () => {
   if (!location.hash) location.hash = "#/home";
   route();
-  initSidebar();
+  // initSidebar();
 });
 
 const header = document.getElementById("site-header");

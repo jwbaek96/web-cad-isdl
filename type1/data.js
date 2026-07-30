@@ -172,7 +172,7 @@ const SITE_DATA = {
     "3D Printing": [
       {
         "Title": "Design of High-Strength Dual Cure Resin for Digital Light Processing",
-        "Link": "",
+        "Link": "#",
         "Thumb": "../files/no image.jpg",
         "File": "#"
       },
@@ -184,7 +184,7 @@ const SITE_DATA = {
       },
       {
         "Title": "Chamber-less Top-down DLP 3D Printing Process using Geometry-informed Sacrificial Fence(GI-ASF) and Projection-recoating Integrated Sequentail Masking(PRISM) Strategy",
-        "Link": "",
+        "Link": "#",
         "Thumb": "../files/no image.jpg",
         "File": "#"
       },
@@ -200,19 +200,19 @@ const SITE_DATA = {
         "Title": "An Image-Based Deep Learning Framework for Predictiong Thermal Conductivity of Composites",
         "Link": "https://www.youtube.com/watch?v=OTHUyJbmztI&feature=youtu.be",
         "Thumb": "../files/no image.jpg",
-        "File": "sample text"
+        "File": "#"
       },
       {
         "Title": "Development of a Agentic AI for Manufacturing Siite",
         "Link": "https://www.youtube.com/watch?v=-prX9wng9hg ,https://www.youtube.com/watch?v=A6zBQzA4tJI",
         "Thumb": "../files/no image.jpg",
-        "File": "sample text"
+        "File": "#"
       },
       {
         "Title": "Assembly Video-Based Knowledge Extraction and Active Monitoring System",
         "Link": "https://www.youtube.com/watch?v=fbFzOWxSvF4",
         "Thumb": "../files/no image.jpg",
-        "File": "sample text"
+        "File": "#"
       }
     ],
     "Design Optimization": [
@@ -220,7 +220,7 @@ const SITE_DATA = {
         "Title": "Sample Title",
         "Link": "",
         "Thumb": "../files/no image.jpg",
-        "File": "sample text"
+        "File": "#"
       }
     ],
     "Defense": [
@@ -228,19 +228,19 @@ const SITE_DATA = {
         "Title": "Development of Multiphysics-Based Simulation Method for the Detailed Interior Ballistics Analysis",
         "Link": "",
         "Thumb": "../files/no image.jpg",
-        "File": "sample text"
+        "File": "#"
       },
       {
         "Title": "AI-Based Automatic Anti-Drone System",
         "Link": "https://www.youtube.com/watch?v=StgSRcm8FCo",
         "Thumb": "../files/no image.jpg",
-        "File": "sample text"
+        "File": "#"
       },
       {
         "Title": "A Requirement-Driven DfAM Framework for Reconfiguring Product Physical Architecture",
         "Link": "",
         "Thumb": "../files/no image.jpg",
-        "File": "sample text"
+        "File": "#"
       }
     ]
   },
@@ -555,29 +555,55 @@ const SITE_DATA = {
     "Technology Transfer": []
   },
   "lecture": {
-    "status": "Preparing",
+    "status": "- Preparing -",
     "message": "The lecture page is currently being prepared. Please check back later."
   },
   "news_award": {
     "Achievements": [
       {
         "Title": "Sample Title",
-        "Main Image": "../files/no image.jpg",
-        "Images": ["../files/no image.jpg", "../files/no image.jpg", "../files/no image.jpg"],
+        "Date": "2026-07-31",
+        "Main Image": "../files/isdl.jpg",
+        "Image": ["../files/isdl.jpg", "../files/no image.jpg", "../files/no image.jpg"],
         "Text": "Sample text"
+      },
+      {
+        "Title": "Sample Title",
+        "Date": "2026-00-00",
+        "Main Image": "../files/no image.jpg",
+        "Image": ["../files/no image.jpg", "../files/no image.jpg", "../files/no image.jpg"],
+        "Text": "Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text"
       }
     ],
     "Research&Projects": [
       {
         "Title": "Sample Title",
-        "Images": ["../files/no image.jpg", "../files/no image.jpg", "../files/no image.jpg"],
+        "Date": "YYYY-MM-DD",
+        "Main Image": "../files/no image.jpg",
+        "Image": ["../files/no image.jpg", "../files/no image.jpg", "../files/no image.jpg"],
+        "Text": "Sample text"
+      },
+      {
+        "Title": "Sample Title",
+        "Date": "YYYY-MM-DD",
+        "Main Image": "../files/no image.jpg",
+        "Image": ["../files/no image.jpg", "../files/no image.jpg", "../files/no image.jpg"],
         "Text": "Sample text"
       }
     ],
     "Lab Activities": [
       {
         "Title": "Sample Title",
-        "Images": ["../files/no image.jpg", "../files/no image.jpg", "../files/no image.jpg"],
+        "Date": "YYYY-MM-DD",
+        "Main Image": "../files/no image.jpg",
+        "Image": ["../files/no image.jpg", "../files/no image.jpg", "../files/no image.jpg"],
+        "Text": "Sample text"
+      },
+      {
+        "Title": "Sample Title",
+        "Date": "YYYY-MM-DD",
+        "Main Image": "../files/no image.jpg",
+        "Image": ["../files/no image.jpg", "../files/no image.jpg", "../files/no image.jpg"],
         "Text": "Sample text"
       }
     ]
