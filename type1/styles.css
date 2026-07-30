@@ -960,7 +960,7 @@ main {
 
   .news-card { flex-direction: column; gap: 0; }
   .research-thumb,
-  .news-thumb { width: 100%; aspect-ratio: 1/1; min-height: 200px; }
+  .news-thumb { width: 100%; aspect-ratio: 1/1; min-height: 200px; overflow: hidden; }
   .news-body { padding: 18px; }
 }
 
