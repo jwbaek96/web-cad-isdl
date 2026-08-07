@@ -1,4 +1,3 @@
-// Auto-generated from client JSON data
 const SITE_DATA = {
   "home": {
     "greeting": {
