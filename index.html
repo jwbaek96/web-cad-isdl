@@ -7,8 +7,16 @@
     <meta name="description" content="시스템융합설계연구실(ISDL) — 중앙대학교 기계공학부, 3D 프린팅 · 인공지능 · 스마트 제조 · 국방기술 연구실">
     <link rel="icon" type="image/png" href="../files/CAU_emblem.png">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="skeleton.css">
   </head>
   <body>
+    <div id="page-loader" aria-hidden="true">
+      <img class="page-loader-logo" src="files/CAU_emblem.png" alt="">
+      <div class="page-loader-wordmark">ISDL</div>
+      <div class="page-loader-subtitle">Integrated Systems Design Laboratory</div>
+      <div class="page-loader-progress"></div>
+    </div>
+
     <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
     <nav id="sidebar" class="sidebar-nav"></nav>
 
@@ -20,6 +28,17 @@
       <p>© 2026 Integrated Systems Design Laboratory (ISDL), School of Mechanical Engineering, Chung-Ang University.<br>
         Contact: Prof. Hae-Jin Choi (<a href="mailto:hjchoi@cau.ac.kr">hjchoi@cau.ac.kr</a>)</p>
     </footer>
+
+    <button id="scroll-top-btn" class="fab-btn" aria-label="맨 위로" title="맨 위로">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+    <a id="youtube-btn" class="fab-btn fab-youtube visible" href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube 채널" title="YouTube 채널">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+      </svg>
+    </a>
 
     <script src="config.js"></script>
     <script src="data.js"></script>

@@ -1,7 +1,8 @@
 const SITE_DATA = {
   "home": {
+    "youtube_url": "https://www.youtube.com/@ISDL-n4z",
     "greeting": {
-      "image": "../files/ISDL.jpg",
+      "image": "../files/no image.jpg",
       "english": "Welcome to Integrated Systems Design Laboratory (ISDL)!\n\nOur research group locates in the School of Mechanical Engineering at Chung-Ang University. \nWe aim to pioneer the future of engineering by blending advanced core technologies of the 4th industrial revolution with the fundamental principles of mechanical systems design. \n\nThe research themes at ISDL focus on the multidisciplinary convergence of 3D Printing, Artificial Intelligence, Smart Manufacturing, and Defense Technology, tailored to real-world industrial sites and field applications. We are dedicated to developing high-performance additive manufacturing processes, AI agents for process optimization, and advanced computer vision/simulation frameworks for Industry, Defense applications.\n\nSpecific research interests include:\n \n - Multi-Material Additive Manufacturing & Photopolymerization (DLP)\n \n - Microstructural SEM Image Analysis & AI-Driven Material Property Prediction\n \n - Optical Computer Vision & Deep Learning-Based Object Detection for Anti-Drone Systems\n \n - In-situ Monitoring, Digital Twin, and Process Optimization AI Agents\n \n - Unmanned Aircraft Systems (UAS) Design & Deployment for Defense Applications.\n\nOur core technologies can be widely applied to advanced thermal management systems, military unmanned aircraft platforms, and next-generation smart manufacturing lines.\n\nPositions are available for graduate research assistants (Ph.D. / M.S. students) and undergraduate internships. Highly motivated and dedicated students can contact Prof. Hae-Jin Choi (hjchoi@cau.ac.kr).",
       "korean": "시스템융합설계연구실 (ISDL)에 오신 것을 환영합니다!\n\n우리 연구실은 중앙대학교 기계공학부에 소속되어 있습니다. ISDL은 4차 산업혁명의 첨단 핵심 기술을 기계 시스템 설계의 기초 원리와 융합하여 공학적 미래를 선도하는 것을 목표로 합니다. \n\n주요 연구 테마는 3D 프린팅, 인공지능(AI), 스마트 제조, 그리고 국방 기술이 실제 산업 현장과 군용 환경에 걸맞게 맞물리는 유기적인 기술 융합에 초점을 맞추고 있습니다. 이를 기반으로 고성능 적층 제조 공정 기술, 데이터 기반의 공정 최적화 AI Agent, 그리고 산업 및 국방 애플리케이션을 위한 첨단 컴퓨터 비전 및 시뮬레이션 프레임워크를 심도 있게 연구합니다.\n\n주요 연구 분야:\n\n  - 이종/복합재 적층제조 (Multi-Material AM) 및 포토폴리머리제이션 (DLP) 공정\n\n  - 미세 조직 SEM 이미지 분석 기반 AI 재료 물성 및 복합재 열전도도 예측 기술\n\n  - 대드론(Anti-Drone) 체계를 위한 광학 컴퓨터 비전 및 딥러닝 기반 드론 탐지(Object Detection) \n    알고리즘\n\n  - 인시츄(In-situ) 모니터링, 디지털 트윈 및 공정 최적화 AI Agent 기술\n\n  - 국방 어플리케이션을 위한 무인 항공기 시스템 (UAS) 설계 및 제조\n\n연구실의 핵심 원천 기술들은 고효율 열관리 시스템 설계, 군용 무인 항공기 플랫폼 고도화, 그리고 차세대 스마트 제조 라인 등 공학 및 국방 전반의 다양한 실무 분야에 혁신적으로 응용될 수 있습니다.\n\nISDL에서는 미래 기술을 함께 개척해 나갈 석·박사 과정 대학원생 및 학부생 인턴을 상시 모집하고 있습니다. 열정적이고 창의적인 학생들은 최해진 교수(hjchoi@cau.ac.kr)에게 연락 바랍니다."
     },
@@ -63,7 +64,7 @@ const SITE_DATA = {
       {
         "직책": "Director",
         "이름": "Hae-Jin Choi / 최해진",
-        "image": "../files/members/director.png",
+        "image": "../files/no image.jpg",
         "office": "Room 429, Building 310 (Centennial Hall), Chung-Ang University",
         "E-mail": "hjchoi@cau.ac.kr",
         "Education": "Ph.D. in Woodruff School of Mechanical Engineering, Georgia Institute of Technology, Atlanta, USA, 2005\nM.S. in Woodruff School of Mechanical Engineering, Georgia Institute of Technology, Atlanta, USA, 2001\nB.S. in Department of Mechanical Engineering, Yonsei University, Seoul, Korea, 1995",
@@ -77,7 +78,7 @@ const SITE_DATA = {
       {
         "직책": "Doctor of Philosophy students",
         "이름": "Mingeon Kim | 김민건",
-        "image": "../files/members/image_2.2.1..png",
+        "image": "../files/no image.jpg",
         "E-mail": "gun4818@cau.ac.kr",
         "Education": "Ph.D. student in School of Mechanical Engineering, Chung-Ang University, 2021.03 - Present.\nM.S. in School of Mechanical Engineering, Chung-Ang University, 2020.\nB.S. in Department of Mechanical and Automotive Engineering, Kyungil University, 2018.",
         "Research area": "AI-based composite property prediction. \nMicrostructure-informed deep learning models.\nGenerative models for simulation-to-SEM adaptation."
@@ -85,7 +86,7 @@ const SITE_DATA = {
       {
         "직책": "Doctor of Philosophy students",
         "이름": "Seungjae Han | 한승재",
-        "image": "../files/members/image_2.2.2..png",
+        "image": "../files/no image.jpg",
         "E-mail": "sj960506@cau.ac.kr",
         "Education": "Ph.D. student in School of Mechanical Engineering, Chung-Ang University, 2023.09 - Present.\nM.S. in School of Mechanical Engineering, Chung-Ang University, 2023.\nB.S. in School of Mechanical Engineering, Chung-Ang University, 2021.",
         "Research area": "AI-based composite property prediction. \nMicrostructure-informed deep learning models.\nGenerative models for simulation-to-SEM adaptation."
@@ -93,7 +94,7 @@ const SITE_DATA = {
       {
         "직책": "Doctor of Philosophy students",
         "이름": "Geonhwi Lee | 이건휘",
-        "image": "../files/members/image_2.2.3..png",
+        "image": "../files/no image.jpg",
         "E-mail": "leegh663@cau.ac.kr",
         "Education": "Ph.D. student in School of Mechanical Engineering, Chung-Ang University, 2025.03 - Present.\nM.S. in School of Mechanical Engineering, Chung-Ang University, 2025.\nB.S. in School of Mechanical Engineering, Chung-Ang University, 2023.",
         "Research area": "Generative AI-based multi-agent systems for manufacturing.\nAI-driven process optimization & monitoring.\nMaterial modeling & simulation for interior ballistics analysis."
@@ -101,7 +102,7 @@ const SITE_DATA = {
       {
         "직책": "Master of Sience students",
         "이름": "Yulseok Byun | 변율석",
-        "image": "../files/members/image_2.2.5..png",
+        "image": "../files/no image.jpg",
         "E-mail": "byunys2000@cau.ac.kr",
         "Education": "M.S. student in School of Mechanical Engineering, Chung-Ang University, 2025.03 - Present(Integrated Ph.D. Course).\nB.S. in School of Mechanical Engineering, Chung-Ang University, 2025.",
         "Research area": ""
@@ -109,7 +110,7 @@ const SITE_DATA = {
       {
         "직책": "Master of Sience students",
         "이름": "Solchan Kim | 김솔찬",
-        "image": "../files/members/image_2.2.6..png",
+        "image": "../files/no image.jpg",
         "E-mail": "sc4146@cau.ac.kr",
         "Education": "M.S. student in School of Mechanical Engineering, Chung-Ang University, 2025.09 - Present.\nB.S. in School of Mechanical Engineering, Dong-eui University, 2024.",
         "Research area": ""
@@ -117,7 +118,7 @@ const SITE_DATA = {
       {
         "직책": "Master of Sience students",
         "이름": "Soohyun Cho | 조수현",
-        "image": "../files/members/image_2.2.7..png",
+        "image": "../files/no image.jpg",
         "E-mail": "whtngus4u@cau.ac.kr",
         "Education": "M.S. student in School of Mechanical Engineering, Chung-Ang University, 2025.09 - Present.\nB.S. in School of Mechanical Engineering, Chung-Ang University, 2024.",
         "Research area": ""
@@ -133,7 +134,7 @@ const SITE_DATA = {
       {
         "직책": "Master of Sience students",
         "이름": "Byeongkwan Kim | 김병관",
-        "image": "../files/members/image_2.2.8..png",
+        "image": "../files/no image.jpg",
         "E-mail": "kbk912003@cau.ac.kr",
         "Education": "M.S. student in School of Mechanical Engineering, Chung-Ang University, 2026.03 - Present.\nB.S. in School of Electronic and IT Media Engineering, Seoul National University of Science and Technology, 2016.",
         "Research area": ""
@@ -141,7 +142,7 @@ const SITE_DATA = {
       {
         "직책": "Master of Sience students",
         "이름": "Sanghwan Lee | 이상환",
-        "image": "../files/members/image_2.2.9..png",
+        "image": "../files/no image.jpg",
         "E-mail": "shl2158@cau.ac.kr",
         "Education": "M.S. student in School of Mechanical Engineering, Chung-Ang University, 2026.09 - Present.\nB.S. in School of Mechanical Engineering, Kookmin University, 2026.",
         "Research area": ""
@@ -149,7 +150,7 @@ const SITE_DATA = {
       {
         "직책": "Undergraduate Internship",
         "이름": "Jidam Yoo | 유지담",
-        "image": "../files/members/image_2.2.10..png",
+        "image": "../files/no image.jpg",
         "E-mail": "jdam1004@cau.ac.kr",
         "Education": "B.S. in School of Mechanical Engineering, Chung-Ang University, 2024.03 - Present",
         "Research area": ""

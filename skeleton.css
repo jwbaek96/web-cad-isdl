@@ -1,0 +1,143 @@
+/* ============================================================
+   ISDL Lab Site — skeleton.css
+   Page intro loader & skeleton loading states
+   ============================================================ */
+
+/* ---- Page intro loader ---- */
+
+#page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  animation: page-loader-out 5s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes page-loader-out {
+  0%, 78%  { opacity: 1; pointer-events: auto; }
+  100%     { opacity: 0; }
+}
+
+.page-loader-logo {
+  width: 90px;
+  animation: page-loader-pulse 2s ease-in-out infinite;
+}
+
+@keyframes page-loader-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+
+.page-loader-wordmark {
+  font-family: Oswald, "Google Sans", Arial, sans-serif;
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: #174ea6;
+  letter-spacing: 6px;
+  line-height: 1;
+}
+
+.page-loader-subtitle {
+  font-family: "Google Sans", "Noto Sans KR", Arial, sans-serif;
+  font-size: 0.8rem;
+  color: #5f6368;
+  letter-spacing: 0.5px;
+}
+
+/* progress bar sweeps across the bottom over 3s */
+.page-loader-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #1a73e8, #174ea6);
+  animation: page-loader-bar 5s linear forwards;
+}
+
+@keyframes page-loader-bar {
+  0%   { width: 0; }
+  100% { width: 100%; }
+}
+
+/* ---- Skeleton shimmer ---- */
+
+@keyframes skeleton-shimmer {
+  0%   { background-position: -800px 0; }
+  100% { background-position:  800px 0; }
+}
+
+.skeleton-block {
+  background: linear-gradient(90deg, #e8e8e8 25%, #d0d0d0 50%, #e8e8e8 75%);
+  background-size: 800px 100%;
+  animation: skeleton-shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+.skeleton-hero-image {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 24px auto;
+  height: 540px;
+  border-radius: 0;
+}
+
+.skeleton-prose {
+  width: min(820px, calc(100% - 48px));
+  height: 200px;
+  margin: 0 auto;
+  border-radius: var(--radius);
+}
+
+.skeleton-highlights {
+  width: 100%;
+  max-width: 820px;
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.skeleton-card {
+  height: 80px;
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+.skeleton-page-title {
+  height: 32px;
+  width: min(280px, 50%);
+  margin: 0 0 28px;
+  border-radius: 4px;
+}
+
+.skeleton-tab-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.skeleton-tab {
+  height: 36px;
+  width: 90px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.skeleton-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (max-width: 880px) {
+  .skeleton-hero-image { height: 420px; }
+  .skeleton-prose      { height: 280px; }
+  .page-loader-wordmark { font-size: 2.2rem; }
+  .page-loader-logo     { width: 70px; }
+}

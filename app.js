@@ -14,7 +14,7 @@ const SITE_DATA_URL = window.SITE_DATA_SOURCE_URL || "";
 const app = document.getElementById("app");
 const toggle = document.getElementById('sidebar-toggle');
 let NAV = [];
-let IS_READY = true;
+let IS_READY = false;
 let HOME_HERO_AUTOPLAY_ID = null;
 
 function stopHomeHeroSlider() {
@@ -22,6 +22,64 @@ function stopHomeHeroSlider() {
     window.clearInterval(HOME_HERO_AUTOPLAY_ID);
     HOME_HERO_AUTOPLAY_ID = null;
   }
+}
+
+function renderSkeleton() {
+  const { key } = parseHash();
+
+  const heroBanner = `
+    <div class="hero">
+      <div class="hero-banner">
+        <span class="mark">${LAB_SHORT}</span>
+        <span class="mark">${LAB_NAME_EN}</span>
+      </div>
+    </div>`;
+
+  if (!key || key === "home") {
+    app.innerHTML = `
+      ${heroBanner}
+      <main>
+        <div class="hero-inner">
+          <h1>${LAB_NAME_KO} (${LAB_SHORT})</h1>
+          <p class="subtitle">${UNIV_KO} · ${UNIV_EN}</p>
+        </div>
+        <div class="skeleton-block skeleton-hero-image"></div>
+        <div class="skeleton-block skeleton-prose"></div>
+        <div class="section-block">
+          <h2>Research Highlights</h2>
+          <div class="highlight-list">
+            ${Array(4).fill('<div class="skeleton-block skeleton-card"></div>').join("")}
+          </div>
+        </div>
+      </main>
+    `;
+    return;
+  }
+
+  if (key === "lecture") {
+    app.innerHTML = `
+      ${heroBanner}
+      <main>
+        <div class="skeleton-block skeleton-page-title"></div>
+        <div class="skeleton-block skeleton-prose" style="height:120px;margin-top:24px;"></div>
+      </main>
+    `;
+    return;
+  }
+
+  // Tab-based pages: members, research, publications, ips, news-award
+  app.innerHTML = `
+    ${heroBanner}
+    <main>
+      <div class="skeleton-block skeleton-page-title"></div>
+      <div class="skeleton-tab-bar">
+        ${Array(4).fill('<div class="skeleton-block skeleton-tab"></div>').join("")}
+      </div>
+      <div class="skeleton-card-list">
+        ${Array(5).fill('<div class="skeleton-block skeleton-card"></div>').join("")}
+      </div>
+    </main>
+  `;
 }
 
 const DEFAULT_MENU = ["Home", "Members", "Research", "Publications", "IPs", "Lecture", "NewsAward"];
@@ -123,6 +181,7 @@ async function initializeData() {
     }
   }
 
+  IS_READY = true;
   buildNav();
   route();
 }
@@ -549,13 +608,21 @@ function renderMembers(activeTab) {
             ${esc((p["이름"] || ""))}
             ${
               p.cvlink
-                ? `<a href="${esc(p.cvlink)}" target="_blank" style="text-decoration: none; color:#000;">[CV]</a>`
+                ? `<a href="${esc((p.cvlink))}" target="_blank" style="text-decoration: none; color:#000;">[CV]</a>`
                 : ""
             }
           </div>
         </div>
       
         <div class="director-right">
+          <div class="director-name">
+            ${esc((p["이름"] || ""))}
+            ${
+              p.cvlink
+                ? `<a href="${esc((p.cvlink))}" target="_blank" style="text-decoration: none; color:#000;">[CV]</a>`
+                : ""
+            }
+          </div>
           ${
             p.office
               ? `
@@ -987,12 +1054,12 @@ function openNewsModal(item) {
     let currentIndex = 0;
 
     const updateGallery = () => {
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      track.scrollTo({ left: currentIndex * track.clientWidth, behavior: 'smooth' });
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === currentIndex);
       });
-      prevBtn.style.display = currentIndex === 0 ? 'none' : 'block';
-      nextBtn.style.display = currentIndex === numImages - 1 ? 'none' : 'block';
+      prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
+      nextBtn.style.display = currentIndex === numImages - 1 ? 'none' : 'flex';
     };
 
     prevBtn.addEventListener('click', () => {
@@ -1122,21 +1189,46 @@ function route() {
   }
   initSidebar();
   aherfisshop();
+  updateFabButtons(key);
   window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
+}
+
+function updateFabButtons(pageKey) {
+  const youtubeBtn = document.getElementById("youtube-btn");
+  if (!youtubeBtn) return;
+  const url = (SITE_DATA.home && SITE_DATA.home.youtube_url) || "";
+  const show = pageKey === "home" && /^https?:\/\//.test(url);
+  youtubeBtn.href = show ? url : "#";
+  youtubeBtn.classList.toggle("visible", show);
 }
 
 window.addEventListener("hashchange", () => {
   if (IS_READY) route();
 });
 window.addEventListener("DOMContentLoaded", () => {
+  const loader = document.getElementById("page-loader");
+  if (loader) {
+    loader.addEventListener("animationend", () => loader.remove(), { once: true });
+  }
+
   buildNav();
   if (!location.hash) location.hash = "#/home";
-  route();
+  const { key, child } = parseHash();
+  renderHeader(key, child);
+  renderSidebar();
+  initSidebar();
+  renderSkeleton();
   initializeData();
-  // initSidebar();
 });
 
 const header = document.getElementById("site-header");
+const scrollTopBtn = document.getElementById("scroll-top-btn");
+
+if (scrollTopBtn) {
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
 
 window.addEventListener("scroll", () => {
   if (window.scrollY > 0) {
@@ -1144,4 +1236,5 @@ window.addEventListener("scroll", () => {
   } else {
     header.classList.remove("scrolled");
   }
+  scrollTopBtn?.classList.toggle("visible", window.scrollY > 200);
 });

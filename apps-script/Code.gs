@@ -8,7 +8,7 @@ const SHEET_CONFIG = {
     highlights: [
       { header: 'Title', key: 'title', type: 'text' },
       { header: 'Image', key: 'image', type: 'image' },
-      { header: 'File Link', key: 'link', type: 'url' },
+      { header: 'File Link', key:  'link', type: 'url' },
     ],
   },
   members: {
@@ -158,13 +158,13 @@ function readLectureSheet(sheet) {
 }
 
 function readMembersSection(sheet, sectionTitle, columns, stopTitles) {
-  const sectionCell = findTextCell(sheet, sectionTitle);
+  const sectionCell = findTextCellInColumn(sheet, sectionTitle, 1);
   if (!sectionCell) return [];
 
-  const headerRow = findHeaderRowBelow(sheet, sectionCell.getRow(), columns.map((column) => column.header));
-  if (!headerRow) return [];
+  const titleRow = sectionCell.getRow();
+  const headerRow = titleRow + 1; // header is always directly below title
 
-  const endRow = findNextSectionRow(sheet, headerRow, stopTitles);
+  const endRow = findNextSectionTitleRow(sheet, headerRow, stopTitles);
   return readTableRows(sheet, headerRow, columns, endRow);
 }
 
@@ -323,17 +323,16 @@ function findHeaderRowBelow(sheet, startRow, expectedHeaders) {
   return 0;
 }
 
-function findNextSectionRow(sheet, startRow, stopTitles) {
+// finds the row before the next section title appears in column A
+function findNextSectionTitleRow(sheet, startRow, stopTitles) {
   if (!stopTitles || stopTitles.length === 0) return sheet.getLastRow();
 
   const lastRow = sheet.getLastRow();
   const stopSet = stopTitles.map(normalizeHeader);
 
   for (let row = startRow + 1; row <= lastRow; row += 1) {
-    const values = sheet.getRange(row, 1, 1, sheet.getLastColumn()).getDisplayValues()[0];
-    const normalized = values.map(normalizeHeader);
-    const hasStopTitle = normalized.some((value) => stopSet.includes(value));
-    if (hasStopTitle) return row - 1;
+    const value = normalizeHeader(sheet.getRange(row, 1).getDisplayValue());
+    if (stopSet.includes(value)) return row - 1;
   }
 
   return lastRow;
@@ -342,6 +341,18 @@ function findNextSectionRow(sheet, startRow, stopTitles) {
 function findTextCell(sheet, text) {
   const found = sheet.createTextFinder(text).findNext();
   return found || null;
+}
+
+function findTextCellInColumn(sheet, text, columnIndex) {
+  const lastRow = sheet.getLastRow();
+  const targetColumn = columnIndex || 1;
+
+  for (let row = 1; row <= lastRow; row += 1) {
+    const value = sheet.getRange(row, targetColumn).getDisplayValue();
+    if (normalizeHeader(value) === normalizeHeader(text)) return sheet.getRange(row, targetColumn);
+  }
+
+  return null;
 }
 
 function groupRowsByCategory(rows) {

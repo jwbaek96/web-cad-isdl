@@ -3,6 +3,7 @@
    Design reference: Google Sites academic-lab template
    (as used by adip.hanyang.ac.kr)
    ============================================================ */
+.hidden{ display:none !important; }
 /* ---------------- Fonts ---------------- */
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+KR:wght@100..900&family=Oswald:wght@200..700&display=swap');
 /* --------------------------------------- */
@@ -25,8 +26,8 @@
   --font-body: "Google Sans Text", "Noto Sans KR", "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   --font-display: "Google Sans", "Noto Sans KR", "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 
-  --hero-banner-font-size: 5rem;
-  --hero-banner-letter-spacing: -1.5px;
+  --hero-banner-font-size: 4rem;
+  --hero-banner-letter-spacing: -7.5px;
 }
 
 * { box-sizing: border-box; }
@@ -69,14 +70,12 @@ img { max-width: 100%; display: block; }
   z-index: 100;
   background: transparent;
   transition: background-color 0.3s ease;
-  /* border-bottom: 1px solid var(--nav-border); */
 }
 
 #site-header.scrolled {background-color: #fff;}
 #site-header.scrolled:has(.sidebar-toggle.open) {background-color: transparent;}
 
 .nav-wrap {
-  /* max-width: var(--max-width); */
   margin: 0 auto;
   padding: 0 24px;
   height: var(--header-h);
@@ -271,19 +270,20 @@ nav.primary-nav li:last-child:hover > .submenu {
 .hero-banner .mark {
   z-index: 2;
   color: #131212;
-  font-family: Oswald, "Google Sans", "Noto Sans KR", "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: var(--hero-banner-font-size);
   text-align: center;
   text-transform: uppercase;
-  /* font-weight: 600; */
+  font-weight: 500;
   letter-spacing: var(--hero-banner-letter-spacing);
 }
 .hero-banner .mark:first-child{
   margin-top: var(--header-h);
+  font-size: calc(var(--hero-banner-font-size) * 1.2);
 }
 .hero-banner .mark:last-child{
   margin-bottom: var(--header-h);
-  border-top: 12px solid #ef9c44;
+  border-top: 12px solid #4466ef;
 }
 
 .hero-image {
@@ -299,10 +299,6 @@ nav.primary-nav li:last-child:hover > .submenu {
   align-items: center;
   overflow: hidden;
 }
-.hero-image img{
-  width: 100%;
-  max-width: var(--max-width);  
-}
 
 .hero-slider {
   position: relative;
@@ -310,6 +306,8 @@ nav.primary-nav li:last-child:hover > .submenu {
   max-width: var(--max-width);
   margin: 0 auto;
   overflow: hidden;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .hero-slider-track {
@@ -320,16 +318,8 @@ nav.primary-nav li:last-child:hover > .submenu {
 
 .hero-slide {
   flex: 0 0 100%;
-  /* min-width: 100%; */
   display: flex;
   justify-content: center;
-}
-
-.hero-slide img {
-  width: 100%;
-  max-width: none;
-  max-height: 600px;
-  object-fit: cover;
 }
 
 .hero-slider-nav {
@@ -604,15 +594,15 @@ main {
    Left
 ========================= */
 
-.director-left{
-    text-align:center;
-}
+.director-left{text-align:center;}
 
 .director-photo{
     width:100%;
     border:1px solid var(--card-border);
     display:block;
 }
+
+.director-left > .director-name{display:none;}
 
 .director-name{
     margin-top:14px;
@@ -635,7 +625,7 @@ main {
 }
 
 .info-block{
-    margin-bottom:16px;
+    margin-top:16px;
     font-size:16px;
     line-height:1.6;
 }
@@ -851,19 +841,20 @@ main {
   display: flex;
   width: 100%;
   height: 100%;
-  transition: transform 0.3s ease;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   }
 
+  .news-modal-gallery-track::-webkit-scrollbar { display: none; }
+
   .news-modal-gallery-track img {
-  width: 100%;
+  flex: 0 0 100%; /* each slide = visible container width, not scrollable total */
+  min-width: 0;
   height: 100%;
   object-fit: contain;
-  scroll-snap-align: center;
-  flex-shrink: 0;
+  scroll-snap-align: start;
   }
 
 .news-modal-gallery-prev,
@@ -1041,6 +1032,9 @@ main {
       max-width:320px;
       margin:auto;
   }
+  .director-left > .director-name{display:block;}
+  .director-right > .director-name{display:none;}
+  
 
   .director-name{font-size:18px;}
   .info-section h3{font-size:20px;}
@@ -1229,4 +1223,57 @@ main {
   .menu-toggle { display: none; } /* Hide old toggle */
   .sidebar-toggle { display: block; } /* Show new toggle */
   nav.primary-nav { display: none; } /* Always hide the old nav on mobile */
+}
+
+/* ---------------- Floating action buttons ---------------- */
+
+.fab-btn {
+  position: fixed;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s;
+  pointer-events: none;
+  z-index: 90;
+  text-decoration: none;
+}
+
+.fab-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.fab-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+#scroll-top-btn {
+  bottom: 24px;
+  background: #202124;
+  color: #fff;
+}
+
+#youtube-btn {
+  left: 24px;
+  right: auto;
+  bottom: 24px;
+  background: #ff0000;
+  color: #fff;
+}
+
+@media (max-width: 880px) {
+  .fab-btn { right: 16px; width: 44px; height: 44px; }
+  #scroll-top-btn { bottom: 16px; }
+  #youtube-btn    { left: 16px; right: auto; bottom: 16px; }
 }
