@@ -16,6 +16,7 @@ const toggle = document.getElementById('sidebar-toggle');
 let NAV = [];
 let IS_READY = false;
 let HOME_HERO_AUTOPLAY_ID = null;
+const DEFAULT_YOUTUBE_URL = (SITE_DATA.home && SITE_DATA.home.youtube_url) || "";
 
 function stopHomeHeroSlider() {
   if (HOME_HERO_AUTOPLAY_ID !== null) {
@@ -1210,7 +1211,7 @@ function route() {
 function updateFabButtons(pageKey) {
   const youtubeBtn = document.getElementById("youtube-btn");
   if (!youtubeBtn) return;
-  const url = (SITE_DATA.home && SITE_DATA.home.youtube_url) || "";
+  const url = (SITE_DATA.home && SITE_DATA.home.youtube_url) || DEFAULT_YOUTUBE_URL;
   const show = pageKey === "home" && /^https?:\/\//.test(url);
   youtubeBtn.href = show ? url : "#";
   youtubeBtn.classList.toggle("visible", show);
