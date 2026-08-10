@@ -811,7 +811,12 @@ function renderResearch(activeTab) {
           ? '<p class="empty-note">등록된 항목이 없습니다.</p>'
           : items
               .map(
-                (it) => `
+                (it) => {
+                  const paperHref = String(it.File || "").trim();
+                  const paperLink = paperHref
+                    ? `<a href="${esc(paperHref)}" target="_blank" rel="noopener">Paper</a>`
+                    : "";
+                  return `
           <div class="research-item">
             <div class="research-thumb">
               <img src="${esc(it.Thumb || "../files/no image.jpg")}" alt="${esc(it.Title)}" />
@@ -819,12 +824,13 @@ function renderResearch(activeTab) {
             <div class="body">
               <h3>${esc(it.Title)}</h3>
               <div class="research-links">
-                <a href="${esc(it.File)}" target="_blank" rel="noopener">Paper</a>
+                ${paperLink}
                 ${linkify(it.Link)}
               </div>
               
             </div>
-          </div>`
+          </div>`;
+                }
               )
               .join("");
       return `<div class="tab-panel ${k === current ? "active" : ""}" data-panel="${esc(

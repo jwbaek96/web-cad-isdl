@@ -1,13 +1,13 @@
 const SHEET_CONFIG = {
   home: {
     greeting: [
-      { header: 'Images', key: 'image', type: 'images' },
+      { header: 'Images', key: 'image', type: 'images', imageSize: 'w1000' },
       { header: 'English', key: 'english', type: 'text' },
       { header: 'Korean', key: 'korean', type: 'text' },
     ],
     highlights: [
       { header: 'Title', key: 'title', type: 'text' },
-      { header: 'Image', key: 'image', type: 'images' },
+      { header: 'Image', key: 'image', type: 'images', imageSize: 'w350' },
       { header: 'File Link', key:  'link', type: 'text' },
     ],
   },
@@ -15,7 +15,7 @@ const SHEET_CONFIG = {
     Director: [
       { header: 'Role (직책/학위)', key: '직책', type: 'text' },
       { header: 'Name (이름)', key: '이름', type: 'text' },
-      { header: 'Image', key: 'image', type: 'image' },
+      { header: 'Image', key: 'image', type: 'image', imageSize: 'w500' },
       { header: 'Email', key: 'E-mail', type: 'text' },
       { header: 'Office', key: 'office', type: 'text' },
       { header: 'Education', key: 'Education', type: 'text' },
@@ -27,7 +27,7 @@ const SHEET_CONFIG = {
     Researchers: [
       { header: 'Role (직책/학위)', key: '직책', type: 'text' },
       { header: 'Name (이름)', key: '이름', type: 'text' },
-      { header: 'Image', key: 'image', type: 'image' },
+      { header: 'Image', key: 'image', type: 'image', imageSize: 'w500' },
       { header: 'Email', key: 'E-mail', type: 'text' },
       { header: 'Education', key: 'Education', type: 'text' },
       { header: 'Research area', key: 'Research area', type: 'text' },
@@ -35,7 +35,7 @@ const SHEET_CONFIG = {
     Alumni: [
       { header: 'Role (직책/학위)', key: '학위', type: 'text' },
       { header: 'Name (이름)', key: '이름', type: 'text' },
-      { header: 'Image', key: 'image', type: 'image' },
+      { header: 'Image', key: 'image', type: 'image', imageSize: 'w500' },
       { header: 'Email', key: 'E-mail', type: 'text' },
       { header: 'Education', key: 'Education', type: 'text' },
       { header: 'Research area', key: 'Research area', type: 'text' },
@@ -46,7 +46,7 @@ const SHEET_CONFIG = {
     { header: 'Category', key: 'category', type: 'text' },
     { header: 'Title', key: 'Title', type: 'text' },
     { header: 'YouTube', key: 'Link', type: 'url' },
-    { header: 'Thumbnail', key: 'Thumb', type: 'image' },
+    { header: 'Thumbnail', key: 'Thumb', type: 'image', imageSize: 'w400' },
     { header: 'File Link', key: 'File', type: 'text' },
   ],
   publications: [
@@ -66,8 +66,8 @@ const SHEET_CONFIG = {
     { header: 'Category', key: 'category', type: 'text' },
     { header: 'Title', key: 'Title', type: 'text' },
     { header: 'Date', key: 'Date', type: 'text' },
-    { header: 'Thumbnail', key: 'Main Image', type: 'image' },
-    { header: 'Images', key: 'Image', type: 'images' },
+    { header: 'Thumbnail', key: 'Main Image', type: 'image', imageSize: 'w400' },
+    { header: 'Images', key: 'Image', type: 'images', imageSize: 'w1000' },
     { header: 'Text', key: 'Text', type: 'text' },
   ],
 };
@@ -228,11 +228,11 @@ function normalizeRow(rowValues, columns) {
 
 function normalizeCellValue(column, value) {
   if (column.type === 'image') {
-    return normalizeImageCell(value)[0] || '';
+    return normalizeImageCell(value, column.imageSize)[0] || '';
   }
 
   if (column.type === 'images') {
-    return normalizeImageCell(value);
+    return normalizeImageCell(value, column.imageSize);
   }
 
   if (column.type === 'url') {
@@ -242,8 +242,8 @@ function normalizeCellValue(column, value) {
   return String(value).trim();
 }
 
-function normalizeImageCell(value) {
-  return splitCsv(value).map((url) => toWebImageUrl(url));
+function normalizeImageCell(value, imageSize) {
+  return splitCsv(value).map((url) => toWebImageUrl(url, imageSize));
 }
 
 function normalizeUrlCell(value) {
@@ -270,14 +270,15 @@ function toWebUrl(url) {
   return `https://drive.google.com/uc?export=download&id=${fileId}`;
 }
 
-function toWebImageUrl(url) {
+function toWebImageUrl(url, imageSize) {
   const trimmed = String(url || '').trim();
   if (!trimmed) return '';
 
   const fileId = extractDriveFileId(trimmed);
   if (!fileId) return trimmed;
 
-  return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
+  const size = String(imageSize || 'w1000').trim() || 'w1000';
+  return `https://drive.google.com/thumbnail?id=${fileId}&sz=${size}`;
 }
 
 function extractDriveFileId(url) {
