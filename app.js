@@ -30,8 +30,8 @@ function renderSkeleton() {
   const heroBanner = `
     <div class="hero">
       <div class="hero-banner">
-        <span class="mark">${LAB_SHORT}</span>
-        <span class="mark">${LAB_NAME_EN}</span>
+        <div class="mark"><span>${LAB_SHORT}</span></div>
+        <div class="mark"><span>${LAB_NAME_EN}</span></div>
       </div>
     </div>`;
 
@@ -270,11 +270,20 @@ function setupHomeHeroSlider() {
   const total = slides.length;
 
   const updateSlider = () => {
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    track.scrollTo({ left: currentIndex * track.clientWidth, behavior: "smooth" });
     dots.forEach((dot, idx) => {
       dot.classList.toggle("active", idx === currentIndex);
     });
   };
+
+  // sync dot state when user scrolls (shift+scroll, touch, etc.)
+  track.addEventListener("scroll", () => {
+    const newIndex = Math.round(track.scrollLeft / (track.clientWidth || 1));
+    if (newIndex !== currentIndex) {
+      currentIndex = newIndex;
+      dots.forEach((dot, idx) => dot.classList.toggle("active", idx === currentIndex));
+    }
+  }, { passive: true });
 
   const goNext = () => {
     currentIndex = (currentIndex + 1) % total;
@@ -423,43 +432,48 @@ function renderSidebar() {
   sidebar.innerHTML = `<ul>${menuHtml}</ul>`;
 }
 
+let _sidebarStaticListenersAttached = false;
+
 function initSidebar() {
-    console.log("initSidebar");
     const sidebar = document.getElementById('sidebar');
     const backdrop = document.getElementById('sidebar-backdrop');
     const toggle = document.getElementById('sidebar-toggle');
 
-    const siteHeader = document.getElementById('site-header');
-
-    function closeSidebar() {
-        sidebar.classList.remove('open');
-        backdrop.classList.remove('open');
-        toggle.classList.remove('open');
+    // toggle is recreated by renderHeader() each time, so always re-attach its listener
+    if (toggle) {
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const t = document.getElementById('sidebar-toggle');
+            sidebar.classList.toggle('open');
+            backdrop.classList.toggle('open');
+            if (t) t.classList.toggle('open');
+        });
     }
 
-    toggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        sidebar.classList.toggle('open');
-        backdrop.classList.toggle('open');
-        toggle.classList.toggle('open');
-    });
+    // static elements (sidebar, backdrop, document) persist — attach only once
+    if (_sidebarStaticListenersAttached) return;
+    _sidebarStaticListenersAttached = true;
+
+    function closeSidebar() {
+        const t = document.getElementById('sidebar-toggle');
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('open');
+        if (t) t.classList.remove('open');
+    }
 
     backdrop.addEventListener('click', closeSidebar);
 
     sidebar.addEventListener('click', (e) => {
-        // Close sidebar if a link is clicked
         if (e.target.closest('a')) {
             closeSidebar();
-            return; // Exit to prevent dropdown logic from running
+            return;
         }
-
-        // Handle dropdown toggle
         const dropdownIcon = e.target.closest('.dropdown-icon');
         if (dropdownIcon) {
             dropdownIcon.closest('li').classList.toggle('open');
         }
     });
-    // ESC 키로 사이드바 닫기
+
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && sidebar.classList.contains('open')) {
             closeSidebar();
@@ -472,7 +486,7 @@ function initSidebar() {
 function pageShell(title, bodyHtml, showHero) {
   const hero = showHero
     ? `<div class="hero">
-         <div class="hero-banner"><span class="mark">${LAB_SHORT}</span><span class="mark">${LAB_NAME_EN}</span></div>
+         <div class="hero-banner"><div class="mark"><span>${LAB_SHORT}</span></div><div class="mark"><span>${LAB_NAME_EN}</span></div></div>
        </div>`
     : "";
   return `${hero}<main>${title ? `<h1 class="page-title">${esc(title)}</h1>` : ""}${bodyHtml}</main>`;
@@ -488,7 +502,7 @@ function renderHome() {
 
   app.innerHTML = `
     <div class="hero">
-      <div class="hero-banner"><span class="mark">${LAB_SHORT}</span><span class="mark">${LAB_NAME_EN}</span></div>
+      <div class="hero-banner"><div class="mark"><span>${LAB_SHORT}</span></div><div class="mark"><span>${LAB_NAME_EN}</span></div></div>
       <div class="hero-image hero-slider" id="home-hero-slider">
         <div class="hero-slider-track">
           ${slides
@@ -535,7 +549,7 @@ function renderHome() {
         <div class="highlight-list">
           ${highlights.map((h) => `
             <a class="highlight-item"
-              href="${esc(h.link)}"
+              href="${h.link}"
               target="_blank"
               rel="noopener noreferrer">
 
