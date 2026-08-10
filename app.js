@@ -16,6 +16,7 @@ const toggle = document.getElementById('sidebar-toggle');
 let NAV = [];
 let IS_READY = false;
 let HOME_HERO_AUTOPLAY_ID = null;
+let HOME_HIGHLIGHT_AUTOPLAY_IDS = [];
 const DEFAULT_YOUTUBE_URL = (SITE_DATA.home && SITE_DATA.home.youtube_url) || "";
 
 function stopHomeHeroSlider() {
@@ -23,6 +24,11 @@ function stopHomeHeroSlider() {
     window.clearInterval(HOME_HERO_AUTOPLAY_ID);
     HOME_HERO_AUTOPLAY_ID = null;
   }
+}
+
+function stopHomeHighlightThumbSliders() {
+  HOME_HIGHLIGHT_AUTOPLAY_IDS.forEach((id) => window.clearInterval(id));
+  HOME_HIGHLIGHT_AUTOPLAY_IDS = [];
 }
 
 function renderSkeleton() {
@@ -317,6 +323,26 @@ function setupHomeHeroSlider() {
 
   updateSlider();
 }
+
+function setupHomeHighlightThumbSliders() {
+  const sliders = Array.from(app.querySelectorAll(".highlight-thumb-slider"));
+  stopHomeHighlightThumbSliders();
+  if (!sliders.length) return;
+
+  sliders.forEach((slider) => {
+    const slides = Array.from(slider.querySelectorAll(".highlight-thumb-slide"));
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+    const autoplayId = window.setInterval(() => {
+      slides[currentIndex].classList.remove("active");
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides[currentIndex].classList.add("active");
+    }, 3000);
+
+    HOME_HIGHLIGHT_AUTOPLAY_IDS.push(autoplayId);
+  });
+}
 /* ---------- helpers ---------- */
 
 function el(html) {
@@ -549,13 +575,23 @@ function renderHome() {
       
         <div class="highlight-list">
           ${highlights.map((h) => `
+            ${(() => {
+              const thumbImages = normalizeImageList(h.image);
+              const thumbSlides = thumbImages.length ? thumbImages : ["../files/no image.jpg"];
+              return `
             <a class="highlight-item"
               href="${h.link}"
               target="_blank"
               rel="noopener noreferrer">
 
-              <div class="highlight-thumb">
-                <img src="${esc(h.image)}" alt="${esc(h.title)}">
+              <div class="highlight-thumb highlight-thumb-slider">
+                <div class="highlight-thumb-slider-track">
+                  ${thumbSlides
+                    .map(
+                      (src, idx) => `<img class="highlight-thumb-slide ${idx === 0 ? "active" : ""}" src="${esc(src)}" alt="${esc(h.title)}">`
+                    )
+                    .join("")}
+                </div>
               </div>
       
               <div class="highlight-content">
@@ -563,6 +599,8 @@ function renderHome() {
               </div>
       
             </a>
+          `;
+            })()}
           `).join("")}
         </div>
       </div>
@@ -580,6 +618,7 @@ function renderHome() {
   });
 
   setupHomeHeroSlider();
+  setupHomeHighlightThumbSliders();
 }
 
 function renderMembers(activeTab) {
@@ -1150,18 +1189,18 @@ function wireTabs(routeKey) {
 }
 
 /* ---------- a태그 href 값이 #인 것들 ---------- */
-function aherfisshop() {
-  const links = document.querySelectorAll("a");
+// function aherfisshop() {
+//   const links = document.querySelectorAll("a");
 
-  links.forEach(link => {
-    if (link.getAttribute("href") === "#") {
-      link.addEventListener("click", function (event) {
-        event.preventDefault(); // 기본 동작 막기
-        alert("저장된 링크/페이지로 이동합니다.\n(후반 DB 연동하면서 진행될 작업)");
-      });
-    }
-  });
-}
+//   links.forEach(link => {
+//     if (link.getAttribute("href") === "#") {
+//       link.addEventListener("click", function (event) {
+//         event.preventDefault(); // 기본 동작 막기
+//         alert("저장된 링크/페이지로 이동합니다.\n(후반 DB 연동하면서 진행될 작업)");
+//       });
+//     }
+//   });
+// }
 /* ---------- router ---------- */
 
 function parseHash() {
@@ -1173,6 +1212,7 @@ function parseHash() {
 function route() {
   if (!IS_READY) return;
   stopHomeHeroSlider();
+  stopHomeHighlightThumbSliders();
   const { key, child } = parseHash();
   renderHeader(key, child);
   renderSidebar();
@@ -1203,7 +1243,7 @@ function route() {
       renderHome();
   }
   initSidebar();
-  aherfisshop();
+  // aherfisshop();
   updateFabButtons(key);
   window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
 }
@@ -1211,9 +1251,12 @@ function route() {
 function updateFabButtons(pageKey) {
   const youtubeBtn = document.getElementById("youtube-btn");
   if (!youtubeBtn) return;
-  const url = (SITE_DATA.home && SITE_DATA.home.youtube_url) || DEFAULT_YOUTUBE_URL;
-  const show = pageKey === "home" && /^https?:\/\//.test(url);
-  youtubeBtn.href = show ? url : "#";
+  let url = (SITE_DATA.home && SITE_DATA.home.youtube_url) || DEFAULT_YOUTUBE_URL;
+  if (!/^https?:\/\//.test(url)) {
+    url = "https://" + url;
+  }
+  const show = pageKey === "home";
+  youtubeBtn.href = show ? url : "https://www.youtube.com/@ISDL-n4z";
   youtubeBtn.classList.toggle("visible", show);
 }
 

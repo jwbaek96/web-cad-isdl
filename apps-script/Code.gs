@@ -7,8 +7,8 @@ const SHEET_CONFIG = {
     ],
     highlights: [
       { header: 'Title', key: 'title', type: 'text' },
-      { header: 'Image', key: 'image', type: 'image' },
-      { header: 'File Link', key:  'link', type: 'url' },
+      { header: 'Image', key: 'image', type: 'images' },
+      { header: 'File Link', key:  'link', type: 'text' },
     ],
   },
   members: {
@@ -47,7 +47,7 @@ const SHEET_CONFIG = {
     { header: 'Title', key: 'Title', type: 'text' },
     { header: 'YouTube', key: 'Link', type: 'url' },
     { header: 'Thumbnail', key: 'Thumb', type: 'image' },
-    { header: 'File Link', key: 'File', type: 'url' },
+    { header: 'File Link', key: 'File', type: 'text' },
   ],
   publications: [
     { header: 'Category', key: 'category', type: 'text' },
