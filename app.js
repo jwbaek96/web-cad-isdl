@@ -577,7 +577,7 @@ function renderHome() {
           ${highlights.map((h) => `
             ${(() => {
               const thumbImages = normalizeImageList(h.image);
-              const thumbSlides = thumbImages.length ? thumbImages : ["../files/no image.jpg"];
+              const thumbSlides = thumbImages.length ? thumbImages : ["no image.png"];
               return `
             <a class="highlight-item"
               href="${h.link}"
@@ -819,7 +819,7 @@ function renderResearch(activeTab) {
                   return `
           <div class="research-item">
             <div class="research-thumb">
-              <img src="${esc(it.Thumb || "../files/no image.jpg")}" alt="${esc(it.Title)}" />
+              <img src="${esc(it.Thumb || "no image.png")}" alt="${esc(it.Title)}" />
             </div>
             <div class="body">
               <h3>${esc(it.Title)}</h3>
@@ -955,7 +955,7 @@ function renderNewsAward(activeTab) {
                 (it, index) => `
                   <div class="news-card" data-category="${esc(k)}" data-index="${index}">
                     <div class="news-thumb">
-                      <img src="${esc(it["Main Image"] || "../files/no image.jpg")}" alt="${esc(it.Title)}" />
+                      <img src="${esc(it["Main Image"] || "no image.png")}" alt="${esc(it.Title)}" />
                     </div>
                     <div class="news-body">
                       <div class="news-date">${esc(it.Date)}</div>
