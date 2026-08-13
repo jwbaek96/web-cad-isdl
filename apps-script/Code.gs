@@ -6,9 +6,9 @@ const SHEET_CONFIG = {
       { header: 'Korean', key: 'korean', type: 'text' },
     ],
     highlights: [
+      { header: 'Category', key: 'category', type: 'text' },
       { header: 'Title', key: 'title', type: 'text' },
       { header: 'Image', key: 'image', type: 'images', imageSize: 'w350' },
-      { header: 'File Link', key:  'link', type: 'text' },
     ],
   },
   members: {
@@ -46,7 +46,7 @@ const SHEET_CONFIG = {
     { header: 'Category', key: 'category', type: 'text' },
     { header: 'Title', key: 'Title', type: 'text' },
     { header: 'YouTube', key: 'Link', type: 'url' },
-    { header: 'Thumbnail', key: 'Thumb', type: 'image', imageSize: 'w400' },
+    { header: 'Images', key: 'images', type: 'images', imageSize: 'w400' },
     { header: 'File Link', key: 'File', type: 'text' },
   ],
   publications: [
@@ -58,10 +58,10 @@ const SHEET_CONFIG = {
     { header: 'Category', key: 'category', type: 'text' },
     { header: 'Title', key: 'Title', type: 'text' },
   ],
-  lecture: {
-    status: '- Preparing -',
-    message: 'The lecture page is currently being prepared. Please check back later.',
-  },
+  lecture: [
+    { header: 'Title', key: 'Title', type: 'text' },
+    { header: 'Text', key: 'Text', type: 'text' },
+  ],
   news_award: [
     { header: 'Category', key: 'category', type: 'text' },
     { header: 'Title', key: 'Title', type: 'text' },
@@ -146,15 +146,10 @@ function readCategorySheet(sheet, columns) {
 }
 
 function readLectureSheet(sheet) {
-  if (!sheet) return { ...SHEET_CONFIG.lecture };
+  if (!sheet) return [];
 
-  const statusCell = findTextCell(sheet, 'status');
-  const messageCell = findTextCell(sheet, 'message');
-
-  return {
-    status: statusCell ? String(statusCell.getDisplayValue()).trim() : SHEET_CONFIG.lecture.status,
-    message: messageCell ? String(messageCell.getDisplayValue()).trim() : SHEET_CONFIG.lecture.message,
-  };
+  const headerRow = findHeaderRow(sheet, SHEET_CONFIG.lecture.map((column) => column.header));
+  return headerRow ? readTableRows(sheet, headerRow, SHEET_CONFIG.lecture) : [];
 }
 
 function readMembersSection(sheet, sectionTitle, columns, stopTitles) {

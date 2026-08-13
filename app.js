@@ -17,6 +17,7 @@ let NAV = [];
 let IS_READY = false;
 let HOME_HERO_AUTOPLAY_ID = null;
 let HOME_HIGHLIGHT_AUTOPLAY_IDS = [];
+let RESEARCH_GALLERY_AUTOPLAY_IDS = [];
 const DEFAULT_YOUTUBE_URL = (SITE_DATA.home && SITE_DATA.home.youtube_url) || "";
 
 function stopHomeHeroSlider() {
@@ -29,6 +30,11 @@ function stopHomeHeroSlider() {
 function stopHomeHighlightThumbSliders() {
   HOME_HIGHLIGHT_AUTOPLAY_IDS.forEach((id) => window.clearInterval(id));
   HOME_HIGHLIGHT_AUTOPLAY_IDS = [];
+}
+
+function stopResearchThumbGalleries() {
+  RESEARCH_GALLERY_AUTOPLAY_IDS.forEach((id) => window.clearInterval(id));
+  RESEARCH_GALLERY_AUTOPLAY_IDS = [];
 }
 
 function renderSkeleton() {
@@ -246,6 +252,77 @@ function normalizeImageList(imageData) {
   return [];
 }
 
+function normalizeLinkList(linkData) {
+  if (Array.isArray(linkData)) {
+    return linkData.map((v) => String(v || "").trim()).filter(Boolean);
+  }
+
+  if (typeof linkData === "string") {
+    return linkData
+      .split(",")
+      .map((v) => v.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+}
+
+function getYouTubeEmbedUrl(url) {
+  const raw = String(url || "").trim();
+  if (!raw) return "";
+
+  try {
+    const normalized = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
+    const parsed = new URL(normalized);
+    const host = parsed.hostname.replace(/^www\./i, "");
+    let videoId = "";
+
+    if (host === "youtu.be") {
+      videoId = parsed.pathname.replace(/^\/+/, "").split("/")[0];
+    } else if (host === "youtube.com" || host === "m.youtube.com") {
+      if (parsed.pathname === "/watch") {
+        videoId = parsed.searchParams.get("v") || "";
+      } else if (parsed.pathname.startsWith("/shorts/")) {
+        videoId = parsed.pathname.split("/")[2] || "";
+      } else if (parsed.pathname.startsWith("/embed/")) {
+        videoId = parsed.pathname.split("/")[2] || "";
+      }
+    }
+
+    if (!videoId) return "";
+    return `https://www.youtube.com/embed/${esc(videoId)}`;
+  } catch (error) {
+    return "";
+  }
+}
+
+function normalizeTitleKey(title) {
+  return String(title || "").trim().toLowerCase();
+}
+
+function getResearchItemKey(title) {
+  return encodeURIComponent(normalizeTitleKey(title));
+}
+
+function findResearchRouteByTitle(title) {
+  const targetKey = normalizeTitleKey(title);
+  if (!targetKey || !SITE_DATA.research || typeof SITE_DATA.research !== "object") return null;
+
+  const categories = Object.keys(SITE_DATA.research);
+  for (const category of categories) {
+    const items = Array.isArray(SITE_DATA.research[category]) ? SITE_DATA.research[category] : [];
+    const matched = items.find((item) => normalizeTitleKey(item && item.Title) === targetKey);
+    if (matched) {
+      return {
+        category,
+        title: matched.Title,
+      };
+    }
+  }
+
+  return null;
+}
+
 function getNewsGalleryArrowSvg(direction) {
   const isPrev = direction === "prev";
   const path = isPrev
@@ -343,6 +420,63 @@ function setupHomeHighlightThumbSliders() {
     HOME_HIGHLIGHT_AUTOPLAY_IDS.push(autoplayId);
   });
 }
+
+function setupResearchThumbGalleries() {
+  const sliders = Array.from(app.querySelectorAll(".research-thumb-gallery"));
+  stopResearchThumbGalleries();
+  if (!sliders.length) return;
+
+  sliders.forEach((slider) => {
+    const track = slider.querySelector(".research-thumb-slider-track");
+    const slides = Array.from(slider.querySelectorAll(".research-thumb-slide"));
+    const dots = Array.from(slider.querySelectorAll(".news-modal-gallery-pagination .dot"));
+    const prevBtn = slider.querySelector(".news-modal-gallery-prev");
+    const nextBtn = slider.querySelector(".news-modal-gallery-next");
+
+    if (!track || slides.length <= 1) return;
+
+    let currentIndex = 0;
+    const total = slides.length;
+
+    const updateSlider = () => {
+      track.scrollTo({ left: currentIndex * track.clientWidth, behavior: "smooth" });
+      dots.forEach((dot, idx) => dot.classList.toggle("active", idx === currentIndex));
+    };
+
+    track.addEventListener("scroll", () => {
+      const newIndex = Math.round(track.scrollLeft / (track.clientWidth || 1));
+      if (newIndex !== currentIndex) {
+        currentIndex = newIndex;
+        dots.forEach((dot, idx) => dot.classList.toggle("active", idx === currentIndex));
+      }
+    }, { passive: true });
+
+    const goNext = () => {
+      currentIndex = (currentIndex + 1) % total;
+      updateSlider();
+    };
+
+    const goPrev = () => {
+      currentIndex = (currentIndex - 1 + total) % total;
+      updateSlider();
+    };
+
+    if (prevBtn) prevBtn.addEventListener("click", goPrev);
+    if (nextBtn) nextBtn.addEventListener("click", goNext);
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener("click", () => {
+        currentIndex = idx;
+        updateSlider();
+      });
+    });
+
+    const autoplayId = window.setInterval(goNext, 3000);
+    RESEARCH_GALLERY_AUTOPLAY_IDS.push(autoplayId);
+
+    updateSlider();
+  });
+}
 /* ---------- helpers ---------- */
 
 function el(html) {
@@ -377,6 +511,22 @@ function linkify(links) {
     .join("");
 }
 
+function renderLectureText(text) {
+  const source = String(text || "");
+  const linkPattern = /\(\(\s*"([^"]*)"\s*,\s*"([^"]*)"\s*\)\)/g;
+  let html = "";
+  let lastIndex = 0;
+  let match;
+
+  while ((match = linkPattern.exec(source)) !== null) {
+    html += esc(source.slice(lastIndex, match.index));
+    html += `<a href="${esc(match[2])}" target="_blank" rel="noopener">${esc(match[1])}</a>`;
+    lastIndex = match.index + match[0].length;
+  }
+
+  return html + esc(source.slice(lastIndex));
+}
+
 
 /* ---------- header / nav rendering ---------- */
 
@@ -404,6 +554,12 @@ function renderHeader(activeKey, activeChild) {
   header.innerHTML = `
     <div class="nav-wrap">
        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"><span></span></button>
+
+       <div class="site-header-logos">
+       <a href="#/home" class="logo-link"><img src="files/logo_isdl.png" alt="ISDL" class="logo-image"></a>
+       <!--<a href="https://www.cau.ac.kr" class="logo-link"><img src="files/logo_cau.png" alt="중앙대학교" class="logo-image"></a>-->
+       </div>
+
       <nav class="primary-nav" id="primary-nav">
         <ul>${navList}</ul>
       </nav>
@@ -526,6 +682,8 @@ function renderHome() {
   const koText = home.greeting.korean;
   const enText = home.greeting.english;
   const highlights = home.highlights || [];
+  const youtubeLinks = normalizeLinkList(home.youtube && home.youtube.links);
+  const youtubeEmbeds = youtubeLinks.map(getYouTubeEmbedUrl).filter(Boolean);
 
   app.innerHTML = `
     <div class="hero">
@@ -558,6 +716,32 @@ function renderHome() {
       </div>
       
     <main>
+    
+
+      ${
+        youtubeEmbeds.length
+          ? `
+      <div class="section-block home-youtube">
+        <div class="home-youtube-grid">
+          ${youtubeEmbeds
+            .map(
+              (src, idx) => `
+            <div class="home-youtube-card">
+              <iframe
+                src="${src}"
+                title="YouTube video ${idx + 1}"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin">
+              </iframe>
+            </div>`
+            )
+            .join("")}
+        </div>
+      </div>`
+          : ""
+      }
 
       <div class="hero-inner">
         <h1>${LAB_NAME_KO} (${LAB_SHORT})</h1>
@@ -578,11 +762,14 @@ function renderHome() {
             ${(() => {
               const thumbImages = normalizeImageList(h.image);
               const thumbSlides = thumbImages.length ? thumbImages : ["no image.png"];
+              const category = String(h.category || "").trim();
+              const title = String(h.title || "").trim();
+              const highlightHref = category && title
+                ? `#/research/${encodeURIComponent(category)}/${encodeURIComponent(title)}`
+                : "#/research";
               return `
             <a class="highlight-item"
-              href="${h.link}"
-              target="_blank"
-              rel="noopener noreferrer">
+              href="${highlightHref}">
 
               <div class="highlight-thumb highlight-thumb-slider">
                 <div class="highlight-thumb-slider-track">
@@ -791,6 +978,7 @@ function renderResearch(activeTab) {
   const groups = SITE_DATA.research;
   const keys = Object.keys(groups);
   const current = keys.includes(activeTab) ? activeTab : keys[0];
+  const { item: targetItem } = parseHash();
 
   const tabBar = `<div class="tab-bar">
     ${keys
@@ -812,15 +1000,43 @@ function renderResearch(activeTab) {
           : items
               .map(
                 (it) => {
+                  const imageList = normalizeImageList(it.images || it.Thumb);
+                  const slides = imageList;
                   const paperHref = String(it.File || "").trim();
                   const paperLink = paperHref
                     ? `<a href="${esc(paperHref)}" target="_blank" rel="noopener">Paper</a>`
                     : "";
+                  const researchThumb = slides.length
+                    ? `
+                      <div class="research-thumb research-thumb-gallery">
+                        <div class="research-thumb-slider-track">
+                          ${slides
+                            .map(
+                              (src, idx) => `
+                            <div class="research-thumb-slide" data-index="${idx}">
+                              <img src="${esc(src)}" alt="${esc(it.Title)}" />
+                            </div>`
+                            )
+                            .join("")}
+                        </div>
+                        ${
+                          slides.length > 1
+                            ? `<button class="news-modal-gallery-prev" aria-label="Previous image">${getNewsGalleryArrowSvg("prev")}</button>
+                        <button class="news-modal-gallery-next" aria-label="Next image">${getNewsGalleryArrowSvg("next")}</button>
+                        <div class="news-modal-gallery-pagination">
+                          ${slides
+                            .map(
+                              (_, idx) => `<div class="dot ${idx === 0 ? "active" : ""}" data-index="${idx}" aria-label="Go to image ${idx + 1}"></div>`
+                            )
+                            .join("")}
+                        </div>`
+                            : ""
+                        }
+                      </div>`
+                    : "";
                   return `
-          <div class="research-item">
-            <div class="research-thumb">
-              <img src="${esc(it.Thumb || "no image.png")}" alt="${esc(it.Title)}" />
-            </div>
+                    <div class="research-item" data-research-item="${getResearchItemKey(it.Title)}">
+                      ${researchThumb}
             <div class="body">
               <h3>${esc(it.Title)}</h3>
               <div class="research-links">
@@ -841,6 +1057,17 @@ function renderResearch(activeTab) {
 
   app.innerHTML = pageShell("Research", tabBar + panels, true);
   wireTabs("research");
+  setupResearchThumbGalleries();
+
+  if (targetItem) {
+    const targetKey = getResearchItemKey(targetItem);
+    window.setTimeout(() => {
+      const targetEl = app.querySelector(`.research-item[data-research-item="${targetKey}"]`);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }, 0);
+  }
 }
 
 function renderPublications(activeTab) {
@@ -917,13 +1144,24 @@ function renderIPs(activeTab) {
 }
 
 function renderLecture() {
-  const d = SITE_DATA.lecture;
+  const lectures = Array.isArray(SITE_DATA.lecture) ? SITE_DATA.lecture : [];
+  const body = lectures.length
+    ? `<div class="lecture-list">
+        ${lectures
+          .map(
+            (lecture) => `
+          <details class="lecture-item">
+            <summary>${esc(lecture.Title || "")}</summary>
+            <div class="lecture-text">${renderLectureText(lecture.Text)}</div>
+          </details>`
+          )
+          .join("")}
+      </div>`
+    : '<p class="empty-note">등록된 강의가 없습니다.</p>';
+
   app.innerHTML = pageShell(
     "Lecture",
-    `<div class="placeholder-box">
-       <span class="status">${esc(d.status || "")}</span>
-       <p>${esc(d.message || "")}</p>
-     </div>`,
+    body,
     true
   );
 }
@@ -947,12 +1185,46 @@ function renderNewsAward(activeTab) {
   const panels = keys
     .map((k) => {
       const items = groups[k];
-      const inner =
-        !items || items.length === 0
-          ? '<p class="empty-note">등록된 소식이 없습니다.</p>'
-          : items
-              .map(
-                (it, index) => `
+      if (!items || items.length === 0) {
+        return `<div class="tab-panel ${k === current ? "active" : ""}" data-panel="${esc(
+          k
+        )}"><p class="empty-note">등록된 소식이 없습니다.</p></div>`;
+      }
+
+      const yearGroups = items.reduce((acc, item, index) => {
+        const yearMatch = String(item.Date || "").match(/(?:19|20)\d{2}/);
+        const year = yearMatch ? yearMatch[0] : "Other";
+        if (!acc[year]) acc[year] = [];
+        acc[year].push({ item, index });
+        return acc;
+      }, {});
+      const years = Object.keys(yearGroups).sort((a, b) => {
+        if (a === "Other") return 1;
+        if (b === "Other") return -1;
+        return Number(b) - Number(a);
+      });
+      const currentYear = years[0];
+
+      const yearTabs = `<div class="news-year-tabs">
+        ${years
+          .map(
+            (year) =>
+              `<button class="news-year-btn ${year === currentYear ? "active" : ""}" data-year-category="${esc(
+                k
+              )}" data-year="${esc(year)}">${esc(year)}</button>`
+          )
+          .join("")}
+      </div>`;
+
+      const yearPanels = years
+        .map(
+          (year) => `
+        <div class="news-year-panel ${year === currentYear ? "active" : ""}" data-year-category="${esc(
+          k
+        )}" data-year-panel="${esc(year)}">
+          ${yearGroups[year]
+            .map(
+              ({ item: it, index }) => `
                   <div class="news-card" data-category="${esc(k)}" data-index="${index}">
                     <div class="news-thumb">
                       <img src="${esc(it["Main Image"] || "no image.png")}" alt="${esc(it.Title)}" />
@@ -963,11 +1235,15 @@ function renderNewsAward(activeTab) {
                       <p>${esc(it.Text)}</p>
                     </div>
                   </div>`
-              )
-              .join("");
+            )
+            .join("")}
+        </div>`
+        )
+        .join("");
+
       return `<div class="tab-panel ${k === current ? "active" : ""}" data-panel="${esc(
         k
-      )}">${inner}</div>`;
+      )}">${yearTabs}${yearPanels}</div>`;
     })
     .join("");
 
@@ -975,6 +1251,19 @@ function renderNewsAward(activeTab) {
 
   const newsContainer = document.getElementById('news-panels');
   newsContainer.addEventListener('click', (e) => {
+    const yearButton = e.target.closest('.news-year-btn');
+    if (yearButton) {
+      const category = yearButton.dataset.yearCategory;
+      const year = yearButton.dataset.year;
+      newsContainer
+        .querySelectorAll(`.news-year-btn[data-year-category="${CSS.escape(category)}"]`)
+        .forEach((button) => button.classList.toggle('active', button === yearButton));
+      newsContainer
+        .querySelectorAll(`.news-year-panel[data-year-category="${CSS.escape(category)}"]`)
+        .forEach((panel) => panel.classList.toggle('active', panel.dataset.yearPanel === year));
+      return;
+    }
+
     const card = e.target.closest('.news-card');
     if (card) {
       const category = card.dataset.category;
@@ -1212,13 +1501,14 @@ function wireTabs(routeKey) {
 function parseHash() {
   const raw = location.hash.replace(/^#\/?/, "");
   const parts = raw.split("/").filter(Boolean).map(decodeURIComponent);
-  return { key: parts[0] || "home", child: parts[1] };
+  return { key: parts[0] || "home", child: parts[1], item: parts[2] };
 }
 
 function route() {
   if (!IS_READY) return;
   stopHomeHeroSlider();
   stopHomeHighlightThumbSliders();
+  stopResearchThumbGalleries();
   const { key, child } = parseHash();
   renderHeader(key, child);
   renderSidebar();
@@ -1257,13 +1547,17 @@ function route() {
 function updateFabButtons(pageKey) {
   const youtubeBtn = document.getElementById("youtube-btn");
   if (!youtubeBtn) return;
-  let url = (SITE_DATA.home && SITE_DATA.home.youtube_url) || DEFAULT_YOUTUBE_URL;
+  let url = DEFAULT_YOUTUBE_URL;
   if (!/^https?:\/\//.test(url)) {
     url = "https://" + url;
   }
+  youtubeBtn.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+    </svg>`
   const show = pageKey === "home";
   youtubeBtn.href = show ? url : "https://www.youtube.com/@ISDL-n4z";
-  youtubeBtn.classList.toggle("visible", show);
+  youtubeBtn.classList = "fab-btn fab-youtube visible";
 }
 
 window.addEventListener("hashchange", () => {
