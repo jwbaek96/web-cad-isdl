@@ -527,6 +527,13 @@ function renderLectureText(text) {
   return html + esc(source.slice(lastIndex));
 }
 
+function renderNewsSummaryText(text) {
+  return esc(String(text || "").replace(
+    /\(\(\s*"([^"]*)"\s*,\s*"([^"]*)"\s*\)\)/g,
+    "$1"
+  ));
+}
+
 
 /* ---------- header / nav rendering ---------- */
 
@@ -1232,7 +1239,7 @@ function renderNewsAward(activeTab) {
                     <div class="news-body">
                       <div class="news-date">${esc(it.Date)}</div>
                       <h3>${esc(it.Title)}</h3>
-                      <p>${esc(it.Text)}</p>
+                      <p>${renderNewsSummaryText(it.Text)}</p>
                     </div>
                   </div>`
             )
@@ -1343,9 +1350,10 @@ function createNewsModal(item) {
             ${pagination}
           </div>
           <div class="news-modal-details">
+          <p class="news-date">${esc(item.Date)}</p>
           <h3>${esc(item.Title)}</h3>
             <!--<p class="news-modal-date">${esc(item.Date)}</p>-->
-            <p>${esc(item.Text)}</p>
+            <p>${renderLectureText(item.Text)}</p>
           </div>
         </div>
       </div>
