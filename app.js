@@ -563,8 +563,8 @@ function renderHeader(activeKey, activeChild) {
        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"><span></span></button>
 
        <div class="site-header-logos">
-       <a href="#/home" class="logo-link"><img src="../files/logo_isdl.png" alt="ISDL" class="logo-image"></a>
-       <!--<a href="https://www.cau.ac.kr" class="logo-link"><img src="../files/logo_cau.png" alt="중앙대학교" class="logo-image"></a>-->
+       <a href="#/home" class="logo-link"><img src="logo_ISDL.png" alt="ISDL" class="logo-image"></a>
+       <!--<a href="https://www.cau.ac.kr" class="logo-link"><img src="logo_CAU.png" alt="중앙대학교" class="logo-image"></a>-->
        </div>
 
       <nav class="primary-nav" id="primary-nav">
